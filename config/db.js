@@ -23,7 +23,7 @@ const sequelize = new Sequelize(DB_NAME, DB_USER, DB_PASSWORD, {
   host: DB_HOST,
   port: DB_PORT,
   dialect: 'postgres',
-  logging: NODE_ENV === 'local' ? console.log : false,
+  logging: NODE_ENV === 'production' ? console.log : false,
   pool: {
     max: 10,
     min: 0,
@@ -47,7 +47,8 @@ const sequelize = new Sequelize(DB_NAME, DB_USER, DB_PASSWORD, {
   },
   dialectOptions,
   // Add query logging in development
-  benchmark: NODE_ENV === 'local'
+  benchmark: NODE_ENV === 'production'
 });
+
 
 module.exports = sequelize;
