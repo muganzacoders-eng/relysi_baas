@@ -1,0 +1,4522 @@
+{
+  "analyst_report": {
+    "columns": [
+      {
+        "column_name": "id",
+        "data_type": "integer",
+        "character_maximum_length": null,
+        "is_nullable": "NO",
+        "column_default": "nextval('analyst_report_id_seq'::regclass)",
+        "ordinal_position": 1,
+        "udt_name": "int4",
+        "numeric_precision": 32,
+        "numeric_scale": 0
+      },
+      {
+        "column_name": "student_id",
+        "data_type": "integer",
+        "character_maximum_length": null,
+        "is_nullable": "YES",
+        "column_default": null,
+        "ordinal_position": 2,
+        "udt_name": "int4",
+        "numeric_precision": 32,
+        "numeric_scale": 0
+      },
+      {
+        "column_name": "teacher_id",
+        "data_type": "integer",
+        "character_maximum_length": null,
+        "is_nullable": "YES",
+        "column_default": null,
+        "ordinal_position": 3,
+        "udt_name": "int4",
+        "numeric_precision": 32,
+        "numeric_scale": 0
+      },
+      {
+        "column_name": "exam_id",
+        "data_type": "integer",
+        "character_maximum_length": null,
+        "is_nullable": "YES",
+        "column_default": null,
+        "ordinal_position": 4,
+        "udt_name": "int4",
+        "numeric_precision": 32,
+        "numeric_scale": 0
+      },
+      {
+        "column_name": "report_text",
+        "data_type": "text",
+        "character_maximum_length": null,
+        "is_nullable": "NO",
+        "column_default": null,
+        "ordinal_position": 5,
+        "udt_name": "text",
+        "numeric_precision": null,
+        "numeric_scale": null
+      },
+      {
+        "column_name": "status",
+        "data_type": "character varying",
+        "character_maximum_length": 20,
+        "is_nullable": "YES",
+        "column_default": null,
+        "ordinal_position": 6,
+        "udt_name": "varchar",
+        "numeric_precision": null,
+        "numeric_scale": null
+      },
+      {
+        "column_name": "sent_at",
+        "data_type": "timestamp without time zone",
+        "character_maximum_length": null,
+        "is_nullable": "YES",
+        "column_default": null,
+        "ordinal_position": 7,
+        "udt_name": "timestamp",
+        "numeric_precision": null,
+        "numeric_scale": null
+      }
+    ],
+    "constraints": [
+      {
+        "constraint_name": "analyst_report_exam_id_fkey",
+        "constraint_type": "FOREIGN KEY",
+        "column_name": "exam_id",
+        "foreign_table_name": "exam",
+        "foreign_column_name": "id"
+      },
+      {
+        "constraint_name": "analyst_report_student_id_fkey",
+        "constraint_type": "FOREIGN KEY",
+        "column_name": "student_id",
+        "foreign_table_name": "user",
+        "foreign_column_name": "id"
+      },
+      {
+        "constraint_name": "analyst_report_teacher_id_fkey",
+        "constraint_type": "FOREIGN KEY",
+        "column_name": "teacher_id",
+        "foreign_table_name": "user",
+        "foreign_column_name": "id"
+      },
+      {
+        "constraint_name": "analyst_report_pkey",
+        "constraint_type": "PRIMARY KEY",
+        "column_name": "id",
+        "foreign_table_name": "analyst_report",
+        "foreign_column_name": "id"
+      }
+    ],
+    "indexes": [
+      {
+        "indexname": "analyst_report_pkey",
+        "indexdef": "CREATE UNIQUE INDEX analyst_report_pkey ON public.analyst_report USING btree (id)"
+      }
+    ],
+    "row_count": 9
+  },
+  "classroom_enrollments": {
+    "columns": [
+      {
+        "column_name": "enrollment_id",
+        "data_type": "integer",
+        "character_maximum_length": null,
+        "is_nullable": "NO",
+        "column_default": "nextval('classroom_enrollments_enrollment_id_seq'::regclass)",
+        "ordinal_position": 1,
+        "udt_name": "int4",
+        "numeric_precision": 32,
+        "numeric_scale": 0
+      },
+      {
+        "column_name": "classroom_id",
+        "data_type": "integer",
+        "character_maximum_length": null,
+        "is_nullable": "NO",
+        "column_default": null,
+        "ordinal_position": 2,
+        "udt_name": "int4",
+        "numeric_precision": 32,
+        "numeric_scale": 0
+      },
+      {
+        "column_name": "student_id",
+        "data_type": "integer",
+        "character_maximum_length": null,
+        "is_nullable": "NO",
+        "column_default": null,
+        "ordinal_position": 3,
+        "udt_name": "int4",
+        "numeric_precision": 32,
+        "numeric_scale": 0
+      },
+      {
+        "column_name": "enrollment_date",
+        "data_type": "timestamp with time zone",
+        "character_maximum_length": null,
+        "is_nullable": "YES",
+        "column_default": null,
+        "ordinal_position": 4,
+        "udt_name": "timestamptz",
+        "numeric_precision": null,
+        "numeric_scale": null
+      },
+      {
+        "column_name": "status",
+        "data_type": "USER-DEFINED",
+        "character_maximum_length": null,
+        "is_nullable": "YES",
+        "column_default": "'active'::enum_classroom_enrollments_status",
+        "ordinal_position": 5,
+        "udt_name": "enum_classroom_enrollments_status",
+        "numeric_precision": null,
+        "numeric_scale": null
+      }
+    ],
+    "constraints": [
+      {
+        "constraint_name": "classroom_enrollments_classroom_id_fkey",
+        "constraint_type": "FOREIGN KEY",
+        "column_name": "classroom_id",
+        "foreign_table_name": "classrooms",
+        "foreign_column_name": "classroom_id"
+      },
+      {
+        "constraint_name": "classroom_enrollments_student_id_fkey",
+        "constraint_type": "FOREIGN KEY",
+        "column_name": "student_id",
+        "foreign_table_name": "users",
+        "foreign_column_name": "user_id"
+      },
+      {
+        "constraint_name": "classroom_enrollments_pkey",
+        "constraint_type": "PRIMARY KEY",
+        "column_name": "enrollment_id",
+        "foreign_table_name": "classroom_enrollments",
+        "foreign_column_name": "enrollment_id"
+      }
+    ],
+    "indexes": [
+      {
+        "indexname": "classroom_enrollments_pkey",
+        "indexdef": "CREATE UNIQUE INDEX classroom_enrollments_pkey ON public.classroom_enrollments USING btree (enrollment_id)"
+      }
+    ],
+    "row_count": 0
+  },
+  "classrooms": {
+    "columns": [
+      {
+        "column_name": "classroom_id",
+        "data_type": "integer",
+        "character_maximum_length": null,
+        "is_nullable": "NO",
+        "column_default": "nextval('classrooms_classroom_id_seq'::regclass)",
+        "ordinal_position": 1,
+        "udt_name": "int4",
+        "numeric_precision": 32,
+        "numeric_scale": 0
+      },
+      {
+        "column_name": "course_id",
+        "data_type": "integer",
+        "character_maximum_length": null,
+        "is_nullable": "NO",
+        "column_default": null,
+        "ordinal_position": 2,
+        "udt_name": "int4",
+        "numeric_precision": 32,
+        "numeric_scale": 0
+      },
+      {
+        "column_name": "teacher_id",
+        "data_type": "integer",
+        "character_maximum_length": null,
+        "is_nullable": "NO",
+        "column_default": null,
+        "ordinal_position": 3,
+        "udt_name": "int4",
+        "numeric_precision": 32,
+        "numeric_scale": 0
+      },
+      {
+        "column_name": "title",
+        "data_type": "character varying",
+        "character_maximum_length": 255,
+        "is_nullable": "NO",
+        "column_default": null,
+        "ordinal_position": 4,
+        "udt_name": "varchar",
+        "numeric_precision": null,
+        "numeric_scale": null
+      },
+      {
+        "column_name": "description",
+        "data_type": "text",
+        "character_maximum_length": null,
+        "is_nullable": "YES",
+        "column_default": null,
+        "ordinal_position": 5,
+        "udt_name": "text",
+        "numeric_precision": null,
+        "numeric_scale": null
+      },
+      {
+        "column_name": "schedule",
+        "data_type": "jsonb",
+        "character_maximum_length": null,
+        "is_nullable": "YES",
+        "column_default": null,
+        "ordinal_position": 6,
+        "udt_name": "jsonb",
+        "numeric_precision": null,
+        "numeric_scale": null
+      },
+      {
+        "column_name": "max_students",
+        "data_type": "integer",
+        "character_maximum_length": null,
+        "is_nullable": "YES",
+        "column_default": null,
+        "ordinal_position": 7,
+        "udt_name": "int4",
+        "numeric_precision": 32,
+        "numeric_scale": 0
+      },
+      {
+        "column_name": "current_students",
+        "data_type": "integer",
+        "character_maximum_length": null,
+        "is_nullable": "YES",
+        "column_default": "0",
+        "ordinal_position": 8,
+        "udt_name": "int4",
+        "numeric_precision": 32,
+        "numeric_scale": 0
+      },
+      {
+        "column_name": "is_active",
+        "data_type": "boolean",
+        "character_maximum_length": null,
+        "is_nullable": "YES",
+        "column_default": "true",
+        "ordinal_position": 9,
+        "udt_name": "bool",
+        "numeric_precision": null,
+        "numeric_scale": null
+      },
+      {
+        "column_name": "created_at",
+        "data_type": "timestamp with time zone",
+        "character_maximum_length": null,
+        "is_nullable": "NO",
+        "column_default": null,
+        "ordinal_position": 10,
+        "udt_name": "timestamptz",
+        "numeric_precision": null,
+        "numeric_scale": null
+      },
+      {
+        "column_name": "updated_at",
+        "data_type": "timestamp with time zone",
+        "character_maximum_length": null,
+        "is_nullable": "NO",
+        "column_default": null,
+        "ordinal_position": 11,
+        "udt_name": "timestamptz",
+        "numeric_precision": null,
+        "numeric_scale": null
+      }
+    ],
+    "constraints": [
+      {
+        "constraint_name": "classrooms_course_id_fkey",
+        "constraint_type": "FOREIGN KEY",
+        "column_name": "course_id",
+        "foreign_table_name": "courses",
+        "foreign_column_name": "course_id"
+      },
+      {
+        "constraint_name": "classrooms_teacher_id_fkey",
+        "constraint_type": "FOREIGN KEY",
+        "column_name": "teacher_id",
+        "foreign_table_name": "users",
+        "foreign_column_name": "user_id"
+      },
+      {
+        "constraint_name": "classrooms_pkey",
+        "constraint_type": "PRIMARY KEY",
+        "column_name": "classroom_id",
+        "foreign_table_name": "classrooms",
+        "foreign_column_name": "classroom_id"
+      }
+    ],
+    "indexes": [
+      {
+        "indexname": "classrooms_pkey",
+        "indexdef": "CREATE UNIQUE INDEX classrooms_pkey ON public.classrooms USING btree (classroom_id)"
+      }
+    ],
+    "row_count": 0
+  },
+  "content_categories": {
+    "columns": [
+      {
+        "column_name": "category_id",
+        "data_type": "integer",
+        "character_maximum_length": null,
+        "is_nullable": "NO",
+        "column_default": "nextval('content_categories_category_id_seq'::regclass)",
+        "ordinal_position": 1,
+        "udt_name": "int4",
+        "numeric_precision": 32,
+        "numeric_scale": 0
+      },
+      {
+        "column_name": "name",
+        "data_type": "character varying",
+        "character_maximum_length": 100,
+        "is_nullable": "NO",
+        "column_default": null,
+        "ordinal_position": 2,
+        "udt_name": "varchar",
+        "numeric_precision": null,
+        "numeric_scale": null
+      },
+      {
+        "column_name": "description",
+        "data_type": "text",
+        "character_maximum_length": null,
+        "is_nullable": "YES",
+        "column_default": null,
+        "ordinal_position": 3,
+        "udt_name": "text",
+        "numeric_precision": null,
+        "numeric_scale": null
+      }
+    ],
+    "constraints": [
+      {
+        "constraint_name": "content_categories_pkey",
+        "constraint_type": "PRIMARY KEY",
+        "column_name": "category_id",
+        "foreign_table_name": "content_categories",
+        "foreign_column_name": "category_id"
+      },
+      {
+        "constraint_name": "content_categories_name_key1",
+        "constraint_type": "UNIQUE",
+        "column_name": "name",
+        "foreign_table_name": "content_categories",
+        "foreign_column_name": "name"
+      },
+      {
+        "constraint_name": "content_categories_name_key10",
+        "constraint_type": "UNIQUE",
+        "column_name": "name",
+        "foreign_table_name": "content_categories",
+        "foreign_column_name": "name"
+      },
+      {
+        "constraint_name": "content_categories_name_key11",
+        "constraint_type": "UNIQUE",
+        "column_name": "name",
+        "foreign_table_name": "content_categories",
+        "foreign_column_name": "name"
+      },
+      {
+        "constraint_name": "content_categories_name_key12",
+        "constraint_type": "UNIQUE",
+        "column_name": "name",
+        "foreign_table_name": "content_categories",
+        "foreign_column_name": "name"
+      },
+      {
+        "constraint_name": "content_categories_name_key13",
+        "constraint_type": "UNIQUE",
+        "column_name": "name",
+        "foreign_table_name": "content_categories",
+        "foreign_column_name": "name"
+      },
+      {
+        "constraint_name": "content_categories_name_key14",
+        "constraint_type": "UNIQUE",
+        "column_name": "name",
+        "foreign_table_name": "content_categories",
+        "foreign_column_name": "name"
+      },
+      {
+        "constraint_name": "content_categories_name_key15",
+        "constraint_type": "UNIQUE",
+        "column_name": "name",
+        "foreign_table_name": "content_categories",
+        "foreign_column_name": "name"
+      },
+      {
+        "constraint_name": "content_categories_name_key16",
+        "constraint_type": "UNIQUE",
+        "column_name": "name",
+        "foreign_table_name": "content_categories",
+        "foreign_column_name": "name"
+      },
+      {
+        "constraint_name": "content_categories_name_key17",
+        "constraint_type": "UNIQUE",
+        "column_name": "name",
+        "foreign_table_name": "content_categories",
+        "foreign_column_name": "name"
+      },
+      {
+        "constraint_name": "content_categories_name_key18",
+        "constraint_type": "UNIQUE",
+        "column_name": "name",
+        "foreign_table_name": "content_categories",
+        "foreign_column_name": "name"
+      },
+      {
+        "constraint_name": "content_categories_name_key19",
+        "constraint_type": "UNIQUE",
+        "column_name": "name",
+        "foreign_table_name": "content_categories",
+        "foreign_column_name": "name"
+      },
+      {
+        "constraint_name": "content_categories_name_key",
+        "constraint_type": "UNIQUE",
+        "column_name": "name",
+        "foreign_table_name": "content_categories",
+        "foreign_column_name": "name"
+      },
+      {
+        "constraint_name": "content_categories_name_key20",
+        "constraint_type": "UNIQUE",
+        "column_name": "name",
+        "foreign_table_name": "content_categories",
+        "foreign_column_name": "name"
+      },
+      {
+        "constraint_name": "content_categories_name_key21",
+        "constraint_type": "UNIQUE",
+        "column_name": "name",
+        "foreign_table_name": "content_categories",
+        "foreign_column_name": "name"
+      },
+      {
+        "constraint_name": "content_categories_name_key22",
+        "constraint_type": "UNIQUE",
+        "column_name": "name",
+        "foreign_table_name": "content_categories",
+        "foreign_column_name": "name"
+      },
+      {
+        "constraint_name": "content_categories_name_key23",
+        "constraint_type": "UNIQUE",
+        "column_name": "name",
+        "foreign_table_name": "content_categories",
+        "foreign_column_name": "name"
+      },
+      {
+        "constraint_name": "content_categories_name_key3",
+        "constraint_type": "UNIQUE",
+        "column_name": "name",
+        "foreign_table_name": "content_categories",
+        "foreign_column_name": "name"
+      },
+      {
+        "constraint_name": "content_categories_name_key4",
+        "constraint_type": "UNIQUE",
+        "column_name": "name",
+        "foreign_table_name": "content_categories",
+        "foreign_column_name": "name"
+      },
+      {
+        "constraint_name": "content_categories_name_key5",
+        "constraint_type": "UNIQUE",
+        "column_name": "name",
+        "foreign_table_name": "content_categories",
+        "foreign_column_name": "name"
+      },
+      {
+        "constraint_name": "content_categories_name_key6",
+        "constraint_type": "UNIQUE",
+        "column_name": "name",
+        "foreign_table_name": "content_categories",
+        "foreign_column_name": "name"
+      },
+      {
+        "constraint_name": "content_categories_name_key7",
+        "constraint_type": "UNIQUE",
+        "column_name": "name",
+        "foreign_table_name": "content_categories",
+        "foreign_column_name": "name"
+      },
+      {
+        "constraint_name": "content_categories_name_key8",
+        "constraint_type": "UNIQUE",
+        "column_name": "name",
+        "foreign_table_name": "content_categories",
+        "foreign_column_name": "name"
+      },
+      {
+        "constraint_name": "content_categories_name_key9",
+        "constraint_type": "UNIQUE",
+        "column_name": "name",
+        "foreign_table_name": "content_categories",
+        "foreign_column_name": "name"
+      },
+      {
+        "constraint_name": "content_categories_name_key2",
+        "constraint_type": "UNIQUE",
+        "column_name": "name",
+        "foreign_table_name": "content_categories",
+        "foreign_column_name": "name"
+      }
+    ],
+    "indexes": [
+      {
+        "indexname": "content_categories_name_key",
+        "indexdef": "CREATE UNIQUE INDEX content_categories_name_key ON public.content_categories USING btree (name)"
+      },
+      {
+        "indexname": "content_categories_name_key1",
+        "indexdef": "CREATE UNIQUE INDEX content_categories_name_key1 ON public.content_categories USING btree (name)"
+      },
+      {
+        "indexname": "content_categories_name_key10",
+        "indexdef": "CREATE UNIQUE INDEX content_categories_name_key10 ON public.content_categories USING btree (name)"
+      },
+      {
+        "indexname": "content_categories_name_key11",
+        "indexdef": "CREATE UNIQUE INDEX content_categories_name_key11 ON public.content_categories USING btree (name)"
+      },
+      {
+        "indexname": "content_categories_name_key12",
+        "indexdef": "CREATE UNIQUE INDEX content_categories_name_key12 ON public.content_categories USING btree (name)"
+      },
+      {
+        "indexname": "content_categories_name_key13",
+        "indexdef": "CREATE UNIQUE INDEX content_categories_name_key13 ON public.content_categories USING btree (name)"
+      },
+      {
+        "indexname": "content_categories_name_key14",
+        "indexdef": "CREATE UNIQUE INDEX content_categories_name_key14 ON public.content_categories USING btree (name)"
+      },
+      {
+        "indexname": "content_categories_name_key15",
+        "indexdef": "CREATE UNIQUE INDEX content_categories_name_key15 ON public.content_categories USING btree (name)"
+      },
+      {
+        "indexname": "content_categories_name_key16",
+        "indexdef": "CREATE UNIQUE INDEX content_categories_name_key16 ON public.content_categories USING btree (name)"
+      },
+      {
+        "indexname": "content_categories_name_key17",
+        "indexdef": "CREATE UNIQUE INDEX content_categories_name_key17 ON public.content_categories USING btree (name)"
+      },
+      {
+        "indexname": "content_categories_name_key18",
+        "indexdef": "CREATE UNIQUE INDEX content_categories_name_key18 ON public.content_categories USING btree (name)"
+      },
+      {
+        "indexname": "content_categories_name_key19",
+        "indexdef": "CREATE UNIQUE INDEX content_categories_name_key19 ON public.content_categories USING btree (name)"
+      },
+      {
+        "indexname": "content_categories_name_key2",
+        "indexdef": "CREATE UNIQUE INDEX content_categories_name_key2 ON public.content_categories USING btree (name)"
+      },
+      {
+        "indexname": "content_categories_name_key20",
+        "indexdef": "CREATE UNIQUE INDEX content_categories_name_key20 ON public.content_categories USING btree (name)"
+      },
+      {
+        "indexname": "content_categories_name_key21",
+        "indexdef": "CREATE UNIQUE INDEX content_categories_name_key21 ON public.content_categories USING btree (name)"
+      },
+      {
+        "indexname": "content_categories_name_key22",
+        "indexdef": "CREATE UNIQUE INDEX content_categories_name_key22 ON public.content_categories USING btree (name)"
+      },
+      {
+        "indexname": "content_categories_name_key23",
+        "indexdef": "CREATE UNIQUE INDEX content_categories_name_key23 ON public.content_categories USING btree (name)"
+      },
+      {
+        "indexname": "content_categories_name_key3",
+        "indexdef": "CREATE UNIQUE INDEX content_categories_name_key3 ON public.content_categories USING btree (name)"
+      },
+      {
+        "indexname": "content_categories_name_key4",
+        "indexdef": "CREATE UNIQUE INDEX content_categories_name_key4 ON public.content_categories USING btree (name)"
+      },
+      {
+        "indexname": "content_categories_name_key5",
+        "indexdef": "CREATE UNIQUE INDEX content_categories_name_key5 ON public.content_categories USING btree (name)"
+      },
+      {
+        "indexname": "content_categories_name_key6",
+        "indexdef": "CREATE UNIQUE INDEX content_categories_name_key6 ON public.content_categories USING btree (name)"
+      },
+      {
+        "indexname": "content_categories_name_key7",
+        "indexdef": "CREATE UNIQUE INDEX content_categories_name_key7 ON public.content_categories USING btree (name)"
+      },
+      {
+        "indexname": "content_categories_name_key8",
+        "indexdef": "CREATE UNIQUE INDEX content_categories_name_key8 ON public.content_categories USING btree (name)"
+      },
+      {
+        "indexname": "content_categories_name_key9",
+        "indexdef": "CREATE UNIQUE INDEX content_categories_name_key9 ON public.content_categories USING btree (name)"
+      },
+      {
+        "indexname": "content_categories_pkey",
+        "indexdef": "CREATE UNIQUE INDEX content_categories_pkey ON public.content_categories USING btree (category_id)"
+      }
+    ],
+    "row_count": 0
+  },
+  "content_category_mapping": {
+    "columns": [
+      {
+        "column_name": "created_at",
+        "data_type": "timestamp with time zone",
+        "character_maximum_length": null,
+        "is_nullable": "NO",
+        "column_default": null,
+        "ordinal_position": 1,
+        "udt_name": "timestamptz",
+        "numeric_precision": null,
+        "numeric_scale": null
+      },
+      {
+        "column_name": "updated_at",
+        "data_type": "timestamp with time zone",
+        "character_maximum_length": null,
+        "is_nullable": "NO",
+        "column_default": null,
+        "ordinal_position": 2,
+        "udt_name": "timestamptz",
+        "numeric_precision": null,
+        "numeric_scale": null
+      },
+      {
+        "column_name": "content_id",
+        "data_type": "integer",
+        "character_maximum_length": null,
+        "is_nullable": "NO",
+        "column_default": null,
+        "ordinal_position": 3,
+        "udt_name": "int4",
+        "numeric_precision": 32,
+        "numeric_scale": 0
+      },
+      {
+        "column_name": "category_id",
+        "data_type": "integer",
+        "character_maximum_length": null,
+        "is_nullable": "NO",
+        "column_default": null,
+        "ordinal_position": 4,
+        "udt_name": "int4",
+        "numeric_precision": 32,
+        "numeric_scale": 0
+      }
+    ],
+    "constraints": [
+      {
+        "constraint_name": "content_category_mapping_category_id_fkey",
+        "constraint_type": "FOREIGN KEY",
+        "column_name": "category_id",
+        "foreign_table_name": "content_categories",
+        "foreign_column_name": "category_id"
+      },
+      {
+        "constraint_name": "content_category_mapping_content_id_fkey",
+        "constraint_type": "FOREIGN KEY",
+        "column_name": "content_id",
+        "foreign_table_name": "library_content",
+        "foreign_column_name": "content_id"
+      },
+      {
+        "constraint_name": "content_category_mapping_pkey",
+        "constraint_type": "PRIMARY KEY",
+        "column_name": "content_id",
+        "foreign_table_name": "content_category_mapping",
+        "foreign_column_name": "category_id"
+      },
+      {
+        "constraint_name": "content_category_mapping_pkey",
+        "constraint_type": "PRIMARY KEY",
+        "column_name": "content_id",
+        "foreign_table_name": "content_category_mapping",
+        "foreign_column_name": "content_id"
+      },
+      {
+        "constraint_name": "content_category_mapping_pkey",
+        "constraint_type": "PRIMARY KEY",
+        "column_name": "category_id",
+        "foreign_table_name": "content_category_mapping",
+        "foreign_column_name": "category_id"
+      },
+      {
+        "constraint_name": "content_category_mapping_pkey",
+        "constraint_type": "PRIMARY KEY",
+        "column_name": "category_id",
+        "foreign_table_name": "content_category_mapping",
+        "foreign_column_name": "content_id"
+      }
+    ],
+    "indexes": [
+      {
+        "indexname": "content_category_mapping_pkey",
+        "indexdef": "CREATE UNIQUE INDEX content_category_mapping_pkey ON public.content_category_mapping USING btree (content_id, category_id)"
+      }
+    ],
+    "row_count": 0
+  },
+  "counseling_sessions": {
+    "columns": [
+      {
+        "column_name": "session_id",
+        "data_type": "integer",
+        "character_maximum_length": null,
+        "is_nullable": "NO",
+        "column_default": "nextval('counseling_sessions_session_id_seq'::regclass)",
+        "ordinal_position": 1,
+        "udt_name": "int4",
+        "numeric_precision": 32,
+        "numeric_scale": 0
+      },
+      {
+        "column_name": "scheduled_time",
+        "data_type": "timestamp with time zone",
+        "character_maximum_length": null,
+        "is_nullable": "NO",
+        "column_default": null,
+        "ordinal_position": 2,
+        "udt_name": "timestamptz",
+        "numeric_precision": null,
+        "numeric_scale": null
+      },
+      {
+        "column_name": "duration_minutes",
+        "data_type": "integer",
+        "character_maximum_length": null,
+        "is_nullable": "YES",
+        "column_default": "60",
+        "ordinal_position": 3,
+        "udt_name": "int4",
+        "numeric_precision": 32,
+        "numeric_scale": 0
+      },
+      {
+        "column_name": "status",
+        "data_type": "USER-DEFINED",
+        "character_maximum_length": null,
+        "is_nullable": "YES",
+        "column_default": "'requested'::enum_counseling_sessions_status",
+        "ordinal_position": 4,
+        "udt_name": "enum_counseling_sessions_status",
+        "numeric_precision": null,
+        "numeric_scale": null
+      },
+      {
+        "column_name": "notes",
+        "data_type": "text",
+        "character_maximum_length": null,
+        "is_nullable": "YES",
+        "column_default": null,
+        "ordinal_position": 5,
+        "udt_name": "text",
+        "numeric_precision": null,
+        "numeric_scale": null
+      },
+      {
+        "column_name": "is_paid",
+        "data_type": "boolean",
+        "character_maximum_length": null,
+        "is_nullable": "YES",
+        "column_default": "false",
+        "ordinal_position": 6,
+        "udt_name": "bool",
+        "numeric_precision": null,
+        "numeric_scale": null
+      },
+      {
+        "column_name": "meeting_link",
+        "data_type": "character varying",
+        "character_maximum_length": 255,
+        "is_nullable": "YES",
+        "column_default": null,
+        "ordinal_position": 7,
+        "udt_name": "varchar",
+        "numeric_precision": null,
+        "numeric_scale": null
+      },
+      {
+        "column_name": "created_at",
+        "data_type": "timestamp with time zone",
+        "character_maximum_length": null,
+        "is_nullable": "NO",
+        "column_default": null,
+        "ordinal_position": 8,
+        "udt_name": "timestamptz",
+        "numeric_precision": null,
+        "numeric_scale": null
+      },
+      {
+        "column_name": "updated_at",
+        "data_type": "timestamp with time zone",
+        "character_maximum_length": null,
+        "is_nullable": "NO",
+        "column_default": null,
+        "ordinal_position": 9,
+        "udt_name": "timestamptz",
+        "numeric_precision": null,
+        "numeric_scale": null
+      },
+      {
+        "column_name": "expert_id",
+        "data_type": "integer",
+        "character_maximum_length": null,
+        "is_nullable": "YES",
+        "column_default": null,
+        "ordinal_position": 10,
+        "udt_name": "int4",
+        "numeric_precision": 32,
+        "numeric_scale": 0
+      },
+      {
+        "column_name": "student_id",
+        "data_type": "integer",
+        "character_maximum_length": null,
+        "is_nullable": "YES",
+        "column_default": null,
+        "ordinal_position": 11,
+        "udt_name": "int4",
+        "numeric_precision": 32,
+        "numeric_scale": 0
+      },
+      {
+        "column_name": "parent_id",
+        "data_type": "integer",
+        "character_maximum_length": null,
+        "is_nullable": "YES",
+        "column_default": null,
+        "ordinal_position": 12,
+        "udt_name": "int4",
+        "numeric_precision": 32,
+        "numeric_scale": 0
+      }
+    ],
+    "constraints": [
+      {
+        "constraint_name": "counseling_sessions_expert_id_fkey",
+        "constraint_type": "FOREIGN KEY",
+        "column_name": "expert_id",
+        "foreign_table_name": "users",
+        "foreign_column_name": "user_id"
+      },
+      {
+        "constraint_name": "counseling_sessions_parent_id_fkey",
+        "constraint_type": "FOREIGN KEY",
+        "column_name": "parent_id",
+        "foreign_table_name": "users",
+        "foreign_column_name": "user_id"
+      },
+      {
+        "constraint_name": "counseling_sessions_student_id_fkey",
+        "constraint_type": "FOREIGN KEY",
+        "column_name": "student_id",
+        "foreign_table_name": "users",
+        "foreign_column_name": "user_id"
+      },
+      {
+        "constraint_name": "counseling_sessions_pkey",
+        "constraint_type": "PRIMARY KEY",
+        "column_name": "session_id",
+        "foreign_table_name": "counseling_sessions",
+        "foreign_column_name": "session_id"
+      }
+    ],
+    "indexes": [
+      {
+        "indexname": "counseling_sessions_pkey",
+        "indexdef": "CREATE UNIQUE INDEX counseling_sessions_pkey ON public.counseling_sessions USING btree (session_id)"
+      }
+    ],
+    "row_count": 0
+  },
+  "courses": {
+    "columns": [
+      {
+        "column_name": "course_id",
+        "data_type": "integer",
+        "character_maximum_length": null,
+        "is_nullable": "NO",
+        "column_default": "nextval('courses_course_id_seq'::regclass)",
+        "ordinal_position": 1,
+        "udt_name": "int4",
+        "numeric_precision": 32,
+        "numeric_scale": 0
+      },
+      {
+        "column_name": "title",
+        "data_type": "character varying",
+        "character_maximum_length": 255,
+        "is_nullable": "NO",
+        "column_default": null,
+        "ordinal_position": 2,
+        "udt_name": "varchar",
+        "numeric_precision": null,
+        "numeric_scale": null
+      },
+      {
+        "column_name": "description",
+        "data_type": "text",
+        "character_maximum_length": null,
+        "is_nullable": "YES",
+        "column_default": null,
+        "ordinal_position": 3,
+        "udt_name": "text",
+        "numeric_precision": null,
+        "numeric_scale": null
+      },
+      {
+        "column_name": "subject_area",
+        "data_type": "character varying",
+        "character_maximum_length": 100,
+        "is_nullable": "YES",
+        "column_default": null,
+        "ordinal_position": 4,
+        "udt_name": "varchar",
+        "numeric_precision": null,
+        "numeric_scale": null
+      },
+      {
+        "column_name": "level",
+        "data_type": "USER-DEFINED",
+        "character_maximum_length": null,
+        "is_nullable": "YES",
+        "column_default": "'beginner'::enum_courses_level",
+        "ordinal_position": 5,
+        "udt_name": "enum_courses_level",
+        "numeric_precision": null,
+        "numeric_scale": null
+      },
+      {
+        "column_name": "is_active",
+        "data_type": "boolean",
+        "character_maximum_length": null,
+        "is_nullable": "YES",
+        "column_default": "true",
+        "ordinal_position": 6,
+        "udt_name": "bool",
+        "numeric_precision": null,
+        "numeric_scale": null
+      },
+      {
+        "column_name": "created_at",
+        "data_type": "timestamp with time zone",
+        "character_maximum_length": null,
+        "is_nullable": "NO",
+        "column_default": null,
+        "ordinal_position": 7,
+        "udt_name": "timestamptz",
+        "numeric_precision": null,
+        "numeric_scale": null
+      },
+      {
+        "column_name": "updated_at",
+        "data_type": "timestamp with time zone",
+        "character_maximum_length": null,
+        "is_nullable": "NO",
+        "column_default": null,
+        "ordinal_position": 8,
+        "udt_name": "timestamptz",
+        "numeric_precision": null,
+        "numeric_scale": null
+      }
+    ],
+    "constraints": [
+      {
+        "constraint_name": "courses_pkey",
+        "constraint_type": "PRIMARY KEY",
+        "column_name": "course_id",
+        "foreign_table_name": "courses",
+        "foreign_column_name": "course_id"
+      }
+    ],
+    "indexes": [
+      {
+        "indexname": "courses_pkey",
+        "indexdef": "CREATE UNIQUE INDEX courses_pkey ON public.courses USING btree (course_id)"
+      }
+    ],
+    "row_count": 0
+  },
+  "exam": {
+    "columns": [
+      {
+        "column_name": "id",
+        "data_type": "integer",
+        "character_maximum_length": null,
+        "is_nullable": "NO",
+        "column_default": "nextval('exam_id_seq'::regclass)",
+        "ordinal_position": 1,
+        "udt_name": "int4",
+        "numeric_precision": 32,
+        "numeric_scale": 0
+      },
+      {
+        "column_name": "name",
+        "data_type": "character varying",
+        "character_maximum_length": 200,
+        "is_nullable": "NO",
+        "column_default": null,
+        "ordinal_position": 2,
+        "udt_name": "varchar",
+        "numeric_precision": null,
+        "numeric_scale": null
+      },
+      {
+        "column_name": "description",
+        "data_type": "text",
+        "character_maximum_length": null,
+        "is_nullable": "YES",
+        "column_default": null,
+        "ordinal_position": 3,
+        "udt_name": "text",
+        "numeric_precision": null,
+        "numeric_scale": null
+      },
+      {
+        "column_name": "file_path",
+        "data_type": "character varying",
+        "character_maximum_length": 300,
+        "is_nullable": "YES",
+        "column_default": null,
+        "ordinal_position": 4,
+        "udt_name": "varchar",
+        "numeric_precision": null,
+        "numeric_scale": null
+      },
+      {
+        "column_name": "start_time",
+        "data_type": "timestamp without time zone",
+        "character_maximum_length": null,
+        "is_nullable": "NO",
+        "column_default": null,
+        "ordinal_position": 5,
+        "udt_name": "timestamp",
+        "numeric_precision": null,
+        "numeric_scale": null
+      },
+      {
+        "column_name": "end_time",
+        "data_type": "timestamp without time zone",
+        "character_maximum_length": null,
+        "is_nullable": "NO",
+        "column_default": null,
+        "ordinal_position": 6,
+        "udt_name": "timestamp",
+        "numeric_precision": null,
+        "numeric_scale": null
+      },
+      {
+        "column_name": "created_by",
+        "data_type": "integer",
+        "character_maximum_length": null,
+        "is_nullable": "YES",
+        "column_default": null,
+        "ordinal_position": 7,
+        "udt_name": "int4",
+        "numeric_precision": 32,
+        "numeric_scale": 0
+      },
+      {
+        "column_name": "created_at",
+        "data_type": "timestamp without time zone",
+        "character_maximum_length": null,
+        "is_nullable": "YES",
+        "column_default": null,
+        "ordinal_position": 8,
+        "udt_name": "timestamp",
+        "numeric_precision": null,
+        "numeric_scale": null
+      }
+    ],
+    "constraints": [
+      {
+        "constraint_name": "exam_pkey",
+        "constraint_type": "PRIMARY KEY",
+        "column_name": "id",
+        "foreign_table_name": "exam",
+        "foreign_column_name": "id"
+      }
+    ],
+    "indexes": [
+      {
+        "indexname": "exam_pkey",
+        "indexdef": "CREATE UNIQUE INDEX exam_pkey ON public.exam USING btree (id)"
+      }
+    ],
+    "row_count": 25
+  },
+  "exam_attempts": {
+    "columns": [
+      {
+        "column_name": "attempt_id",
+        "data_type": "integer",
+        "character_maximum_length": null,
+        "is_nullable": "NO",
+        "column_default": "nextval('exam_attempts_attempt_id_seq'::regclass)",
+        "ordinal_position": 1,
+        "udt_name": "int4",
+        "numeric_precision": 32,
+        "numeric_scale": 0
+      },
+      {
+        "column_name": "exam_id",
+        "data_type": "integer",
+        "character_maximum_length": null,
+        "is_nullable": "NO",
+        "column_default": null,
+        "ordinal_position": 2,
+        "udt_name": "int4",
+        "numeric_precision": 32,
+        "numeric_scale": 0
+      },
+      {
+        "column_name": "student_id",
+        "data_type": "integer",
+        "character_maximum_length": null,
+        "is_nullable": "NO",
+        "column_default": null,
+        "ordinal_position": 3,
+        "udt_name": "int4",
+        "numeric_precision": 32,
+        "numeric_scale": 0
+      },
+      {
+        "column_name": "start_time",
+        "data_type": "timestamp with time zone",
+        "character_maximum_length": null,
+        "is_nullable": "NO",
+        "column_default": null,
+        "ordinal_position": 4,
+        "udt_name": "timestamptz",
+        "numeric_precision": null,
+        "numeric_scale": null
+      },
+      {
+        "column_name": "end_time",
+        "data_type": "timestamp with time zone",
+        "character_maximum_length": null,
+        "is_nullable": "YES",
+        "column_default": null,
+        "ordinal_position": 5,
+        "udt_name": "timestamptz",
+        "numeric_precision": null,
+        "numeric_scale": null
+      },
+      {
+        "column_name": "status",
+        "data_type": "USER-DEFINED",
+        "character_maximum_length": null,
+        "is_nullable": "YES",
+        "column_default": "'in_progress'::enum_exam_attempts_status",
+        "ordinal_position": 6,
+        "udt_name": "enum_exam_attempts_status",
+        "numeric_precision": null,
+        "numeric_scale": null
+      },
+      {
+        "column_name": "score",
+        "data_type": "integer",
+        "character_maximum_length": null,
+        "is_nullable": "YES",
+        "column_default": null,
+        "ordinal_position": 7,
+        "udt_name": "int4",
+        "numeric_precision": 32,
+        "numeric_scale": 0
+      },
+      {
+        "column_name": "percentage",
+        "data_type": "numeric",
+        "character_maximum_length": null,
+        "is_nullable": "YES",
+        "column_default": null,
+        "ordinal_position": 8,
+        "udt_name": "numeric",
+        "numeric_precision": 5,
+        "numeric_scale": 2
+      }
+    ],
+    "constraints": [
+      {
+        "constraint_name": "exam_attempts_exam_id_fkey",
+        "constraint_type": "FOREIGN KEY",
+        "column_name": "exam_id",
+        "foreign_table_name": "exams",
+        "foreign_column_name": "exam_id"
+      },
+      {
+        "constraint_name": "exam_attempts_student_id_fkey",
+        "constraint_type": "FOREIGN KEY",
+        "column_name": "student_id",
+        "foreign_table_name": "users",
+        "foreign_column_name": "user_id"
+      },
+      {
+        "constraint_name": "exam_attempts_pkey",
+        "constraint_type": "PRIMARY KEY",
+        "column_name": "attempt_id",
+        "foreign_table_name": "exam_attempts",
+        "foreign_column_name": "attempt_id"
+      }
+    ],
+    "indexes": [
+      {
+        "indexname": "exam_attempts_pkey",
+        "indexdef": "CREATE UNIQUE INDEX exam_attempts_pkey ON public.exam_attempts USING btree (attempt_id)"
+      }
+    ],
+    "row_count": 0
+  },
+  "exam_result": {
+    "columns": [
+      {
+        "column_name": "id",
+        "data_type": "integer",
+        "character_maximum_length": null,
+        "is_nullable": "NO",
+        "column_default": "nextval('exam_result_id_seq'::regclass)",
+        "ordinal_position": 1,
+        "udt_name": "int4",
+        "numeric_precision": 32,
+        "numeric_scale": 0
+      },
+      {
+        "column_name": "exam_id",
+        "data_type": "integer",
+        "character_maximum_length": null,
+        "is_nullable": "YES",
+        "column_default": null,
+        "ordinal_position": 2,
+        "udt_name": "int4",
+        "numeric_precision": 32,
+        "numeric_scale": 0
+      },
+      {
+        "column_name": "user_id",
+        "data_type": "integer",
+        "character_maximum_length": null,
+        "is_nullable": "YES",
+        "column_default": null,
+        "ordinal_position": 3,
+        "udt_name": "int4",
+        "numeric_precision": 32,
+        "numeric_scale": 0
+      },
+      {
+        "column_name": "answers",
+        "data_type": "json",
+        "character_maximum_length": null,
+        "is_nullable": "YES",
+        "column_default": null,
+        "ordinal_position": 4,
+        "udt_name": "json",
+        "numeric_precision": null,
+        "numeric_scale": null
+      },
+      {
+        "column_name": "score",
+        "data_type": "double precision",
+        "character_maximum_length": null,
+        "is_nullable": "YES",
+        "column_default": null,
+        "ordinal_position": 5,
+        "udt_name": "float8",
+        "numeric_precision": 53,
+        "numeric_scale": null
+      },
+      {
+        "column_name": "feedback",
+        "data_type": "text",
+        "character_maximum_length": null,
+        "is_nullable": "YES",
+        "column_default": null,
+        "ordinal_position": 6,
+        "udt_name": "text",
+        "numeric_precision": null,
+        "numeric_scale": null
+      },
+      {
+        "column_name": "submitted_at",
+        "data_type": "timestamp without time zone",
+        "character_maximum_length": null,
+        "is_nullable": "YES",
+        "column_default": null,
+        "ordinal_position": 7,
+        "udt_name": "timestamp",
+        "numeric_precision": null,
+        "numeric_scale": null
+      }
+    ],
+    "constraints": [
+      {
+        "constraint_name": "exam_result_exam_id_fkey",
+        "constraint_type": "FOREIGN KEY",
+        "column_name": "exam_id",
+        "foreign_table_name": "exam",
+        "foreign_column_name": "id"
+      },
+      {
+        "constraint_name": "exam_result_pkey",
+        "constraint_type": "PRIMARY KEY",
+        "column_name": "id",
+        "foreign_table_name": "exam_result",
+        "foreign_column_name": "id"
+      }
+    ],
+    "indexes": [
+      {
+        "indexname": "exam_result_pkey",
+        "indexdef": "CREATE UNIQUE INDEX exam_result_pkey ON public.exam_result USING btree (id)"
+      }
+    ],
+    "row_count": 23
+  },
+  "exams": {
+    "columns": [
+      {
+        "column_name": "exam_id",
+        "data_type": "integer",
+        "character_maximum_length": null,
+        "is_nullable": "NO",
+        "column_default": "nextval('exams_exam_id_seq'::regclass)",
+        "ordinal_position": 1,
+        "udt_name": "int4",
+        "numeric_precision": 32,
+        "numeric_scale": 0
+      },
+      {
+        "column_name": "title",
+        "data_type": "character varying",
+        "character_maximum_length": 255,
+        "is_nullable": "NO",
+        "column_default": null,
+        "ordinal_position": 2,
+        "udt_name": "varchar",
+        "numeric_precision": null,
+        "numeric_scale": null
+      },
+      {
+        "column_name": "description",
+        "data_type": "text",
+        "character_maximum_length": null,
+        "is_nullable": "YES",
+        "column_default": null,
+        "ordinal_position": 3,
+        "udt_name": "text",
+        "numeric_precision": null,
+        "numeric_scale": null
+      },
+      {
+        "column_name": "classroom_id",
+        "data_type": "integer",
+        "character_maximum_length": null,
+        "is_nullable": "NO",
+        "column_default": null,
+        "ordinal_position": 4,
+        "udt_name": "int4",
+        "numeric_precision": 32,
+        "numeric_scale": 0
+      },
+      {
+        "column_name": "created_by",
+        "data_type": "integer",
+        "character_maximum_length": null,
+        "is_nullable": "NO",
+        "column_default": null,
+        "ordinal_position": 5,
+        "udt_name": "int4",
+        "numeric_precision": 32,
+        "numeric_scale": 0
+      },
+      {
+        "column_name": "duration_minutes",
+        "data_type": "integer",
+        "character_maximum_length": null,
+        "is_nullable": "NO",
+        "column_default": null,
+        "ordinal_position": 6,
+        "udt_name": "int4",
+        "numeric_precision": 32,
+        "numeric_scale": 0
+      },
+      {
+        "column_name": "total_marks",
+        "data_type": "integer",
+        "character_maximum_length": null,
+        "is_nullable": "NO",
+        "column_default": null,
+        "ordinal_position": 7,
+        "udt_name": "int4",
+        "numeric_precision": 32,
+        "numeric_scale": 0
+      },
+      {
+        "column_name": "passing_marks",
+        "data_type": "integer",
+        "character_maximum_length": null,
+        "is_nullable": "YES",
+        "column_default": null,
+        "ordinal_position": 8,
+        "udt_name": "int4",
+        "numeric_precision": 32,
+        "numeric_scale": 0
+      },
+      {
+        "column_name": "start_time",
+        "data_type": "timestamp with time zone",
+        "character_maximum_length": null,
+        "is_nullable": "YES",
+        "column_default": null,
+        "ordinal_position": 9,
+        "udt_name": "timestamptz",
+        "numeric_precision": null,
+        "numeric_scale": null
+      },
+      {
+        "column_name": "end_time",
+        "data_type": "timestamp with time zone",
+        "character_maximum_length": null,
+        "is_nullable": "YES",
+        "column_default": null,
+        "ordinal_position": 10,
+        "udt_name": "timestamptz",
+        "numeric_precision": null,
+        "numeric_scale": null
+      },
+      {
+        "column_name": "status",
+        "data_type": "USER-DEFINED",
+        "character_maximum_length": null,
+        "is_nullable": "YES",
+        "column_default": "'draft'::enum_exams_status",
+        "ordinal_position": 11,
+        "udt_name": "enum_exams_status",
+        "numeric_precision": null,
+        "numeric_scale": null
+      },
+      {
+        "column_name": "instructions",
+        "data_type": "text",
+        "character_maximum_length": null,
+        "is_nullable": "YES",
+        "column_default": null,
+        "ordinal_position": 12,
+        "udt_name": "text",
+        "numeric_precision": null,
+        "numeric_scale": null
+      },
+      {
+        "column_name": "is_published",
+        "data_type": "boolean",
+        "character_maximum_length": null,
+        "is_nullable": "YES",
+        "column_default": "false",
+        "ordinal_position": 13,
+        "udt_name": "bool",
+        "numeric_precision": null,
+        "numeric_scale": null
+      },
+      {
+        "column_name": "created_at",
+        "data_type": "timestamp with time zone",
+        "character_maximum_length": null,
+        "is_nullable": "NO",
+        "column_default": null,
+        "ordinal_position": 14,
+        "udt_name": "timestamptz",
+        "numeric_precision": null,
+        "numeric_scale": null
+      },
+      {
+        "column_name": "updated_at",
+        "data_type": "timestamp with time zone",
+        "character_maximum_length": null,
+        "is_nullable": "NO",
+        "column_default": null,
+        "ordinal_position": 15,
+        "udt_name": "timestamptz",
+        "numeric_precision": null,
+        "numeric_scale": null
+      }
+    ],
+    "constraints": [
+      {
+        "constraint_name": "exams_classroom_id_fkey",
+        "constraint_type": "FOREIGN KEY",
+        "column_name": "classroom_id",
+        "foreign_table_name": "classrooms",
+        "foreign_column_name": "classroom_id"
+      },
+      {
+        "constraint_name": "exams_created_by_fkey",
+        "constraint_type": "FOREIGN KEY",
+        "column_name": "created_by",
+        "foreign_table_name": "users",
+        "foreign_column_name": "user_id"
+      },
+      {
+        "constraint_name": "exams_pkey",
+        "constraint_type": "PRIMARY KEY",
+        "column_name": "exam_id",
+        "foreign_table_name": "exams",
+        "foreign_column_name": "exam_id"
+      }
+    ],
+    "indexes": [
+      {
+        "indexname": "exams_pkey",
+        "indexdef": "CREATE UNIQUE INDEX exams_pkey ON public.exams USING btree (exam_id)"
+      }
+    ],
+    "row_count": 0
+  },
+  "expert_profiles": {
+    "columns": [
+      {
+        "column_name": "expert_id",
+        "data_type": "integer",
+        "character_maximum_length": null,
+        "is_nullable": "NO",
+        "column_default": null,
+        "ordinal_position": 1,
+        "udt_name": "int4",
+        "numeric_precision": 32,
+        "numeric_scale": 0
+      },
+      {
+        "column_name": "specialization",
+        "data_type": "character varying",
+        "character_maximum_length": 255,
+        "is_nullable": "YES",
+        "column_default": null,
+        "ordinal_position": 2,
+        "udt_name": "varchar",
+        "numeric_precision": null,
+        "numeric_scale": null
+      },
+      {
+        "column_name": "qualifications",
+        "data_type": "text",
+        "character_maximum_length": null,
+        "is_nullable": "YES",
+        "column_default": null,
+        "ordinal_position": 3,
+        "udt_name": "text",
+        "numeric_precision": null,
+        "numeric_scale": null
+      },
+      {
+        "column_name": "years_experience",
+        "data_type": "integer",
+        "character_maximum_length": null,
+        "is_nullable": "YES",
+        "column_default": null,
+        "ordinal_position": 4,
+        "udt_name": "int4",
+        "numeric_precision": 32,
+        "numeric_scale": 0
+      },
+      {
+        "column_name": "hourly_rate",
+        "data_type": "numeric",
+        "character_maximum_length": null,
+        "is_nullable": "YES",
+        "column_default": null,
+        "ordinal_position": 5,
+        "udt_name": "numeric",
+        "numeric_precision": 10,
+        "numeric_scale": 2
+      },
+      {
+        "column_name": "bio",
+        "data_type": "text",
+        "character_maximum_length": null,
+        "is_nullable": "YES",
+        "column_default": null,
+        "ordinal_position": 6,
+        "udt_name": "text",
+        "numeric_precision": null,
+        "numeric_scale": null
+      },
+      {
+        "column_name": "availability",
+        "data_type": "jsonb",
+        "character_maximum_length": null,
+        "is_nullable": "YES",
+        "column_default": null,
+        "ordinal_position": 7,
+        "udt_name": "jsonb",
+        "numeric_precision": null,
+        "numeric_scale": null
+      },
+      {
+        "column_name": "user_id",
+        "data_type": "integer",
+        "character_maximum_length": null,
+        "is_nullable": "YES",
+        "column_default": null,
+        "ordinal_position": 8,
+        "udt_name": "int4",
+        "numeric_precision": 32,
+        "numeric_scale": 0
+      }
+    ],
+    "constraints": [
+      {
+        "constraint_name": "expert_profiles_user_id_fkey",
+        "constraint_type": "FOREIGN KEY",
+        "column_name": "user_id",
+        "foreign_table_name": "users",
+        "foreign_column_name": "user_id"
+      },
+      {
+        "constraint_name": "expert_profiles_pkey",
+        "constraint_type": "PRIMARY KEY",
+        "column_name": "expert_id",
+        "foreign_table_name": "expert_profiles",
+        "foreign_column_name": "expert_id"
+      }
+    ],
+    "indexes": [
+      {
+        "indexname": "expert_profiles_pkey",
+        "indexdef": "CREATE UNIQUE INDEX expert_profiles_pkey ON public.expert_profiles USING btree (expert_id)"
+      }
+    ],
+    "row_count": 0
+  },
+  "lesson": {
+    "columns": [
+      {
+        "column_name": "id",
+        "data_type": "integer",
+        "character_maximum_length": null,
+        "is_nullable": "NO",
+        "column_default": "nextval('lesson_id_seq'::regclass)",
+        "ordinal_position": 1,
+        "udt_name": "int4",
+        "numeric_precision": 32,
+        "numeric_scale": 0
+      },
+      {
+        "column_name": "title",
+        "data_type": "character varying",
+        "character_maximum_length": 200,
+        "is_nullable": "NO",
+        "column_default": null,
+        "ordinal_position": 2,
+        "udt_name": "varchar",
+        "numeric_precision": null,
+        "numeric_scale": null
+      },
+      {
+        "column_name": "description",
+        "data_type": "text",
+        "character_maximum_length": null,
+        "is_nullable": "YES",
+        "column_default": null,
+        "ordinal_position": 3,
+        "udt_name": "text",
+        "numeric_precision": null,
+        "numeric_scale": null
+      },
+      {
+        "column_name": "subject_id",
+        "data_type": "integer",
+        "character_maximum_length": null,
+        "is_nullable": "NO",
+        "column_default": null,
+        "ordinal_position": 4,
+        "udt_name": "int4",
+        "numeric_precision": 32,
+        "numeric_scale": 0
+      },
+      {
+        "column_name": "file_path",
+        "data_type": "character varying",
+        "character_maximum_length": 300,
+        "is_nullable": "YES",
+        "column_default": null,
+        "ordinal_position": 5,
+        "udt_name": "varchar",
+        "numeric_precision": null,
+        "numeric_scale": null
+      },
+      {
+        "column_name": "download_count",
+        "data_type": "integer",
+        "character_maximum_length": null,
+        "is_nullable": "YES",
+        "column_default": null,
+        "ordinal_position": 6,
+        "udt_name": "int4",
+        "numeric_precision": 32,
+        "numeric_scale": 0
+      },
+      {
+        "column_name": "teacher_id",
+        "data_type": "integer",
+        "character_maximum_length": null,
+        "is_nullable": "NO",
+        "column_default": null,
+        "ordinal_position": 7,
+        "udt_name": "int4",
+        "numeric_precision": 32,
+        "numeric_scale": 0
+      },
+      {
+        "column_name": "created_at",
+        "data_type": "timestamp without time zone",
+        "character_maximum_length": null,
+        "is_nullable": "YES",
+        "column_default": null,
+        "ordinal_position": 8,
+        "udt_name": "timestamp",
+        "numeric_precision": null,
+        "numeric_scale": null
+      }
+    ],
+    "constraints": [
+      {
+        "constraint_name": "lesson_subject_id_fkey",
+        "constraint_type": "FOREIGN KEY",
+        "column_name": "subject_id",
+        "foreign_table_name": "subject",
+        "foreign_column_name": "id"
+      },
+      {
+        "constraint_name": "lesson_teacher_id_fkey",
+        "constraint_type": "FOREIGN KEY",
+        "column_name": "teacher_id",
+        "foreign_table_name": "user",
+        "foreign_column_name": "id"
+      },
+      {
+        "constraint_name": "lesson_pkey",
+        "constraint_type": "PRIMARY KEY",
+        "column_name": "id",
+        "foreign_table_name": "lesson",
+        "foreign_column_name": "id"
+      }
+    ],
+    "indexes": [
+      {
+        "indexname": "lesson_pkey",
+        "indexdef": "CREATE UNIQUE INDEX lesson_pkey ON public.lesson USING btree (id)"
+      }
+    ],
+    "row_count": 3
+  },
+  "library_content": {
+    "columns": [
+      {
+        "column_name": "content_id",
+        "data_type": "integer",
+        "character_maximum_length": null,
+        "is_nullable": "NO",
+        "column_default": "nextval('library_content_content_id_seq'::regclass)",
+        "ordinal_position": 1,
+        "udt_name": "int4",
+        "numeric_precision": 32,
+        "numeric_scale": 0
+      },
+      {
+        "column_name": "title",
+        "data_type": "character varying",
+        "character_maximum_length": 255,
+        "is_nullable": "NO",
+        "column_default": null,
+        "ordinal_position": 2,
+        "udt_name": "varchar",
+        "numeric_precision": null,
+        "numeric_scale": null
+      },
+      {
+        "column_name": "description",
+        "data_type": "text",
+        "character_maximum_length": null,
+        "is_nullable": "YES",
+        "column_default": null,
+        "ordinal_position": 3,
+        "udt_name": "text",
+        "numeric_precision": null,
+        "numeric_scale": null
+      },
+      {
+        "column_name": "content_type",
+        "data_type": "USER-DEFINED",
+        "character_maximum_length": null,
+        "is_nullable": "NO",
+        "column_default": null,
+        "ordinal_position": 4,
+        "udt_name": "enum_library_content_content_type",
+        "numeric_precision": null,
+        "numeric_scale": null
+      },
+      {
+        "column_name": "file_url",
+        "data_type": "character varying",
+        "character_maximum_length": 255,
+        "is_nullable": "NO",
+        "column_default": null,
+        "ordinal_position": 5,
+        "udt_name": "varchar",
+        "numeric_precision": null,
+        "numeric_scale": null
+      },
+      {
+        "column_name": "file_key",
+        "data_type": "character varying",
+        "character_maximum_length": 255,
+        "is_nullable": "YES",
+        "column_default": null,
+        "ordinal_position": 6,
+        "udt_name": "varchar",
+        "numeric_precision": null,
+        "numeric_scale": null
+      },
+      {
+        "column_name": "file_size",
+        "data_type": "integer",
+        "character_maximum_length": null,
+        "is_nullable": "YES",
+        "column_default": null,
+        "ordinal_position": 7,
+        "udt_name": "int4",
+        "numeric_precision": 32,
+        "numeric_scale": 0
+      },
+      {
+        "column_name": "duration",
+        "data_type": "integer",
+        "character_maximum_length": null,
+        "is_nullable": "YES",
+        "column_default": null,
+        "ordinal_position": 8,
+        "udt_name": "int4",
+        "numeric_precision": 32,
+        "numeric_scale": 0
+      },
+      {
+        "column_name": "is_paid",
+        "data_type": "boolean",
+        "character_maximum_length": null,
+        "is_nullable": "YES",
+        "column_default": "false",
+        "ordinal_position": 9,
+        "udt_name": "bool",
+        "numeric_precision": null,
+        "numeric_scale": null
+      },
+      {
+        "column_name": "price",
+        "data_type": "numeric",
+        "character_maximum_length": null,
+        "is_nullable": "YES",
+        "column_default": "0",
+        "ordinal_position": 10,
+        "udt_name": "numeric",
+        "numeric_precision": 10,
+        "numeric_scale": 2
+      },
+      {
+        "column_name": "is_approved",
+        "data_type": "boolean",
+        "character_maximum_length": null,
+        "is_nullable": "YES",
+        "column_default": "false",
+        "ordinal_position": 11,
+        "udt_name": "bool",
+        "numeric_precision": null,
+        "numeric_scale": null
+      },
+      {
+        "column_name": "created_at",
+        "data_type": "timestamp with time zone",
+        "character_maximum_length": null,
+        "is_nullable": "NO",
+        "column_default": null,
+        "ordinal_position": 12,
+        "udt_name": "timestamptz",
+        "numeric_precision": null,
+        "numeric_scale": null
+      },
+      {
+        "column_name": "updated_at",
+        "data_type": "timestamp with time zone",
+        "character_maximum_length": null,
+        "is_nullable": "NO",
+        "column_default": null,
+        "ordinal_position": 13,
+        "udt_name": "timestamptz",
+        "numeric_precision": null,
+        "numeric_scale": null
+      },
+      {
+        "column_name": "uploaded_by",
+        "data_type": "integer",
+        "character_maximum_length": null,
+        "is_nullable": "YES",
+        "column_default": null,
+        "ordinal_position": 14,
+        "udt_name": "int4",
+        "numeric_precision": 32,
+        "numeric_scale": 0
+      }
+    ],
+    "constraints": [
+      {
+        "constraint_name": "library_content_uploaded_by_fkey",
+        "constraint_type": "FOREIGN KEY",
+        "column_name": "uploaded_by",
+        "foreign_table_name": "users",
+        "foreign_column_name": "user_id"
+      },
+      {
+        "constraint_name": "library_content_pkey",
+        "constraint_type": "PRIMARY KEY",
+        "column_name": "content_id",
+        "foreign_table_name": "library_content",
+        "foreign_column_name": "content_id"
+      }
+    ],
+    "indexes": [
+      {
+        "indexname": "library_content_pkey",
+        "indexdef": "CREATE UNIQUE INDEX library_content_pkey ON public.library_content USING btree (content_id)"
+      }
+    ],
+    "row_count": 0
+  },
+  "notifications": {
+    "columns": [
+      {
+        "column_name": "notification_id",
+        "data_type": "integer",
+        "character_maximum_length": null,
+        "is_nullable": "NO",
+        "column_default": "nextval('notifications_notification_id_seq'::regclass)",
+        "ordinal_position": 1,
+        "udt_name": "int4",
+        "numeric_precision": 32,
+        "numeric_scale": 0
+      },
+      {
+        "column_name": "user_id",
+        "data_type": "integer",
+        "character_maximum_length": null,
+        "is_nullable": "NO",
+        "column_default": null,
+        "ordinal_position": 2,
+        "udt_name": "int4",
+        "numeric_precision": 32,
+        "numeric_scale": 0
+      },
+      {
+        "column_name": "title",
+        "data_type": "character varying",
+        "character_maximum_length": 255,
+        "is_nullable": "NO",
+        "column_default": null,
+        "ordinal_position": 3,
+        "udt_name": "varchar",
+        "numeric_precision": null,
+        "numeric_scale": null
+      },
+      {
+        "column_name": "message",
+        "data_type": "text",
+        "character_maximum_length": null,
+        "is_nullable": "NO",
+        "column_default": null,
+        "ordinal_position": 4,
+        "udt_name": "text",
+        "numeric_precision": null,
+        "numeric_scale": null
+      },
+      {
+        "column_name": "is_read",
+        "data_type": "boolean",
+        "character_maximum_length": null,
+        "is_nullable": "YES",
+        "column_default": "false",
+        "ordinal_position": 5,
+        "udt_name": "bool",
+        "numeric_precision": null,
+        "numeric_scale": null
+      },
+      {
+        "column_name": "type",
+        "data_type": "USER-DEFINED",
+        "character_maximum_length": null,
+        "is_nullable": "YES",
+        "column_default": "'system'::enum_notifications_type",
+        "ordinal_position": 6,
+        "udt_name": "enum_notifications_type",
+        "numeric_precision": null,
+        "numeric_scale": null
+      },
+      {
+        "column_name": "related_entity_type",
+        "data_type": "character varying",
+        "character_maximum_length": 255,
+        "is_nullable": "YES",
+        "column_default": null,
+        "ordinal_position": 7,
+        "udt_name": "varchar",
+        "numeric_precision": null,
+        "numeric_scale": null
+      },
+      {
+        "column_name": "related_entity_id",
+        "data_type": "integer",
+        "character_maximum_length": null,
+        "is_nullable": "YES",
+        "column_default": null,
+        "ordinal_position": 8,
+        "udt_name": "int4",
+        "numeric_precision": 32,
+        "numeric_scale": 0
+      },
+      {
+        "column_name": "createdAt",
+        "data_type": "timestamp with time zone",
+        "character_maximum_length": null,
+        "is_nullable": "NO",
+        "column_default": null,
+        "ordinal_position": 9,
+        "udt_name": "timestamptz",
+        "numeric_precision": null,
+        "numeric_scale": null
+      },
+      {
+        "column_name": "updatedAt",
+        "data_type": "timestamp with time zone",
+        "character_maximum_length": null,
+        "is_nullable": "NO",
+        "column_default": null,
+        "ordinal_position": 10,
+        "udt_name": "timestamptz",
+        "numeric_precision": null,
+        "numeric_scale": null
+      }
+    ],
+    "constraints": [
+      {
+        "constraint_name": "notifications_user_id_fkey",
+        "constraint_type": "FOREIGN KEY",
+        "column_name": "user_id",
+        "foreign_table_name": "users",
+        "foreign_column_name": "user_id"
+      },
+      {
+        "constraint_name": "notifications_pkey",
+        "constraint_type": "PRIMARY KEY",
+        "column_name": "notification_id",
+        "foreign_table_name": "notifications",
+        "foreign_column_name": "notification_id"
+      }
+    ],
+    "indexes": [
+      {
+        "indexname": "notifications_pkey",
+        "indexdef": "CREATE UNIQUE INDEX notifications_pkey ON public.notifications USING btree (notification_id)"
+      }
+    ],
+    "row_count": 0
+  },
+  "nutritionist": {
+    "columns": [
+      {
+        "column_name": "id",
+        "data_type": "integer",
+        "character_maximum_length": null,
+        "is_nullable": "NO",
+        "column_default": "nextval('nutritionist_id_seq'::regclass)",
+        "ordinal_position": 1,
+        "udt_name": "int4",
+        "numeric_precision": 32,
+        "numeric_scale": 0
+      },
+      {
+        "column_name": "name",
+        "data_type": "character varying",
+        "character_maximum_length": 100,
+        "is_nullable": "NO",
+        "column_default": null,
+        "ordinal_position": 2,
+        "udt_name": "varchar",
+        "numeric_precision": null,
+        "numeric_scale": null
+      },
+      {
+        "column_name": "email",
+        "data_type": "character varying",
+        "character_maximum_length": 120,
+        "is_nullable": "NO",
+        "column_default": null,
+        "ordinal_position": 3,
+        "udt_name": "varchar",
+        "numeric_precision": null,
+        "numeric_scale": null
+      },
+      {
+        "column_name": "phone",
+        "data_type": "character varying",
+        "character_maximum_length": 20,
+        "is_nullable": "YES",
+        "column_default": null,
+        "ordinal_position": 4,
+        "udt_name": "varchar",
+        "numeric_precision": null,
+        "numeric_scale": null
+      },
+      {
+        "column_name": "experience",
+        "data_type": "integer",
+        "character_maximum_length": null,
+        "is_nullable": "YES",
+        "column_default": null,
+        "ordinal_position": 5,
+        "udt_name": "int4",
+        "numeric_precision": 32,
+        "numeric_scale": 0
+      },
+      {
+        "column_name": "rating",
+        "data_type": "double precision",
+        "character_maximum_length": null,
+        "is_nullable": "YES",
+        "column_default": null,
+        "ordinal_position": 6,
+        "udt_name": "float8",
+        "numeric_precision": 53,
+        "numeric_scale": null
+      },
+      {
+        "column_name": "specialty",
+        "data_type": "character varying",
+        "character_maximum_length": 100,
+        "is_nullable": "YES",
+        "column_default": null,
+        "ordinal_position": 7,
+        "udt_name": "varchar",
+        "numeric_precision": null,
+        "numeric_scale": null
+      },
+      {
+        "column_name": "bio",
+        "data_type": "text",
+        "character_maximum_length": null,
+        "is_nullable": "YES",
+        "column_default": null,
+        "ordinal_position": 8,
+        "udt_name": "text",
+        "numeric_precision": null,
+        "numeric_scale": null
+      },
+      {
+        "column_name": "created_at",
+        "data_type": "timestamp without time zone",
+        "character_maximum_length": null,
+        "is_nullable": "YES",
+        "column_default": null,
+        "ordinal_position": 9,
+        "udt_name": "timestamp",
+        "numeric_precision": null,
+        "numeric_scale": null
+      }
+    ],
+    "constraints": [
+      {
+        "constraint_name": "nutritionist_pkey",
+        "constraint_type": "PRIMARY KEY",
+        "column_name": "id",
+        "foreign_table_name": "nutritionist",
+        "foreign_column_name": "id"
+      },
+      {
+        "constraint_name": "nutritionist_email_key",
+        "constraint_type": "UNIQUE",
+        "column_name": "email",
+        "foreign_table_name": "nutritionist",
+        "foreign_column_name": "email"
+      }
+    ],
+    "indexes": [
+      {
+        "indexname": "nutritionist_email_key",
+        "indexdef": "CREATE UNIQUE INDEX nutritionist_email_key ON public.nutritionist USING btree (email)"
+      },
+      {
+        "indexname": "nutritionist_pkey",
+        "indexdef": "CREATE UNIQUE INDEX nutritionist_pkey ON public.nutritionist USING btree (id)"
+      }
+    ],
+    "row_count": 13
+  },
+  "parent_profiles": {
+    "columns": [
+      {
+        "column_name": "parent_id",
+        "data_type": "integer",
+        "character_maximum_length": null,
+        "is_nullable": "NO",
+        "column_default": null,
+        "ordinal_position": 1,
+        "udt_name": "int4",
+        "numeric_precision": 32,
+        "numeric_scale": 0
+      },
+      {
+        "column_name": "children",
+        "data_type": "ARRAY",
+        "character_maximum_length": null,
+        "is_nullable": "YES",
+        "column_default": null,
+        "ordinal_position": 2,
+        "udt_name": "_int4",
+        "numeric_precision": null,
+        "numeric_scale": null
+      },
+      {
+        "column_name": "notification_preferences",
+        "data_type": "jsonb",
+        "character_maximum_length": null,
+        "is_nullable": "YES",
+        "column_default": null,
+        "ordinal_position": 3,
+        "udt_name": "jsonb",
+        "numeric_precision": null,
+        "numeric_scale": null
+      },
+      {
+        "column_name": "user_id",
+        "data_type": "integer",
+        "character_maximum_length": null,
+        "is_nullable": "YES",
+        "column_default": null,
+        "ordinal_position": 4,
+        "udt_name": "int4",
+        "numeric_precision": 32,
+        "numeric_scale": 0
+      }
+    ],
+    "constraints": [
+      {
+        "constraint_name": "parent_profiles_user_id_fkey",
+        "constraint_type": "FOREIGN KEY",
+        "column_name": "user_id",
+        "foreign_table_name": "users",
+        "foreign_column_name": "user_id"
+      },
+      {
+        "constraint_name": "parent_profiles_pkey",
+        "constraint_type": "PRIMARY KEY",
+        "column_name": "parent_id",
+        "foreign_table_name": "parent_profiles",
+        "foreign_column_name": "parent_id"
+      }
+    ],
+    "indexes": [
+      {
+        "indexname": "parent_profiles_pkey",
+        "indexdef": "CREATE UNIQUE INDEX parent_profiles_pkey ON public.parent_profiles USING btree (parent_id)"
+      }
+    ],
+    "row_count": 0
+  },
+  "payments": {
+    "columns": [
+      {
+        "column_name": "payment_id",
+        "data_type": "integer",
+        "character_maximum_length": null,
+        "is_nullable": "NO",
+        "column_default": "nextval('payments_payment_id_seq'::regclass)",
+        "ordinal_position": 1,
+        "udt_name": "int4",
+        "numeric_precision": 32,
+        "numeric_scale": 0
+      },
+      {
+        "column_name": "amount",
+        "data_type": "numeric",
+        "character_maximum_length": null,
+        "is_nullable": "NO",
+        "column_default": null,
+        "ordinal_position": 2,
+        "udt_name": "numeric",
+        "numeric_precision": 10,
+        "numeric_scale": 2
+      },
+      {
+        "column_name": "currency",
+        "data_type": "character varying",
+        "character_maximum_length": 3,
+        "is_nullable": "YES",
+        "column_default": "'USD'::character varying",
+        "ordinal_position": 3,
+        "udt_name": "varchar",
+        "numeric_precision": null,
+        "numeric_scale": null
+      },
+      {
+        "column_name": "payment_method",
+        "data_type": "character varying",
+        "character_maximum_length": 50,
+        "is_nullable": "YES",
+        "column_default": null,
+        "ordinal_position": 4,
+        "udt_name": "varchar",
+        "numeric_precision": null,
+        "numeric_scale": null
+      },
+      {
+        "column_name": "payment_status",
+        "data_type": "USER-DEFINED",
+        "character_maximum_length": null,
+        "is_nullable": "YES",
+        "column_default": "'pending'::enum_payments_payment_status",
+        "ordinal_position": 5,
+        "udt_name": "enum_payments_payment_status",
+        "numeric_precision": null,
+        "numeric_scale": null
+      },
+      {
+        "column_name": "payment_gateway_id",
+        "data_type": "character varying",
+        "character_maximum_length": 255,
+        "is_nullable": "YES",
+        "column_default": null,
+        "ordinal_position": 6,
+        "udt_name": "varchar",
+        "numeric_precision": null,
+        "numeric_scale": null
+      },
+      {
+        "column_name": "description",
+        "data_type": "text",
+        "character_maximum_length": null,
+        "is_nullable": "YES",
+        "column_default": null,
+        "ordinal_position": 7,
+        "udt_name": "text",
+        "numeric_precision": null,
+        "numeric_scale": null
+      },
+      {
+        "column_name": "related_entity_type",
+        "data_type": "character varying",
+        "character_maximum_length": 50,
+        "is_nullable": "YES",
+        "column_default": null,
+        "ordinal_position": 8,
+        "udt_name": "varchar",
+        "numeric_precision": null,
+        "numeric_scale": null
+      },
+      {
+        "column_name": "related_entity_id",
+        "data_type": "integer",
+        "character_maximum_length": null,
+        "is_nullable": "YES",
+        "column_default": null,
+        "ordinal_position": 9,
+        "udt_name": "int4",
+        "numeric_precision": 32,
+        "numeric_scale": 0
+      },
+      {
+        "column_name": "receipt_url",
+        "data_type": "character varying",
+        "character_maximum_length": 255,
+        "is_nullable": "YES",
+        "column_default": null,
+        "ordinal_position": 10,
+        "udt_name": "varchar",
+        "numeric_precision": null,
+        "numeric_scale": null
+      },
+      {
+        "column_name": "created_at",
+        "data_type": "timestamp with time zone",
+        "character_maximum_length": null,
+        "is_nullable": "NO",
+        "column_default": null,
+        "ordinal_position": 11,
+        "udt_name": "timestamptz",
+        "numeric_precision": null,
+        "numeric_scale": null
+      },
+      {
+        "column_name": "updated_at",
+        "data_type": "timestamp with time zone",
+        "character_maximum_length": null,
+        "is_nullable": "NO",
+        "column_default": null,
+        "ordinal_position": 12,
+        "udt_name": "timestamptz",
+        "numeric_precision": null,
+        "numeric_scale": null
+      },
+      {
+        "column_name": "user_id",
+        "data_type": "integer",
+        "character_maximum_length": null,
+        "is_nullable": "YES",
+        "column_default": null,
+        "ordinal_position": 13,
+        "udt_name": "int4",
+        "numeric_precision": 32,
+        "numeric_scale": 0
+      }
+    ],
+    "constraints": [
+      {
+        "constraint_name": "payments_user_id_fkey",
+        "constraint_type": "FOREIGN KEY",
+        "column_name": "user_id",
+        "foreign_table_name": "users",
+        "foreign_column_name": "user_id"
+      },
+      {
+        "constraint_name": "payments_pkey",
+        "constraint_type": "PRIMARY KEY",
+        "column_name": "payment_id",
+        "foreign_table_name": "payments",
+        "foreign_column_name": "payment_id"
+      }
+    ],
+    "indexes": [
+      {
+        "indexname": "payments_pkey",
+        "indexdef": "CREATE UNIQUE INDEX payments_pkey ON public.payments USING btree (payment_id)"
+      }
+    ],
+    "row_count": 0
+  },
+  "question": {
+    "columns": [
+      {
+        "column_name": "id",
+        "data_type": "integer",
+        "character_maximum_length": null,
+        "is_nullable": "NO",
+        "column_default": "nextval('question_id_seq'::regclass)",
+        "ordinal_position": 1,
+        "udt_name": "int4",
+        "numeric_precision": 32,
+        "numeric_scale": 0
+      },
+      {
+        "column_name": "exam_id",
+        "data_type": "integer",
+        "character_maximum_length": null,
+        "is_nullable": "NO",
+        "column_default": null,
+        "ordinal_position": 2,
+        "udt_name": "int4",
+        "numeric_precision": 32,
+        "numeric_scale": 0
+      },
+      {
+        "column_name": "text",
+        "data_type": "text",
+        "character_maximum_length": null,
+        "is_nullable": "NO",
+        "column_default": null,
+        "ordinal_position": 3,
+        "udt_name": "text",
+        "numeric_precision": null,
+        "numeric_scale": null
+      },
+      {
+        "column_name": "question_type",
+        "data_type": "character varying",
+        "character_maximum_length": 20,
+        "is_nullable": "NO",
+        "column_default": null,
+        "ordinal_position": 4,
+        "udt_name": "varchar",
+        "numeric_precision": null,
+        "numeric_scale": null
+      },
+      {
+        "column_name": "options",
+        "data_type": "json",
+        "character_maximum_length": null,
+        "is_nullable": "YES",
+        "column_default": null,
+        "ordinal_position": 5,
+        "udt_name": "json",
+        "numeric_precision": null,
+        "numeric_scale": null
+      },
+      {
+        "column_name": "correct_answer",
+        "data_type": "json",
+        "character_maximum_length": null,
+        "is_nullable": "YES",
+        "column_default": null,
+        "ordinal_position": 6,
+        "udt_name": "json",
+        "numeric_precision": null,
+        "numeric_scale": null
+      },
+      {
+        "column_name": "points",
+        "data_type": "integer",
+        "character_maximum_length": null,
+        "is_nullable": "YES",
+        "column_default": null,
+        "ordinal_position": 7,
+        "udt_name": "int4",
+        "numeric_precision": 32,
+        "numeric_scale": 0
+      },
+      {
+        "column_name": "created_at",
+        "data_type": "timestamp without time zone",
+        "character_maximum_length": null,
+        "is_nullable": "YES",
+        "column_default": null,
+        "ordinal_position": 8,
+        "udt_name": "timestamp",
+        "numeric_precision": null,
+        "numeric_scale": null
+      }
+    ],
+    "constraints": [
+      {
+        "constraint_name": "question_exam_id_fkey",
+        "constraint_type": "FOREIGN KEY",
+        "column_name": "exam_id",
+        "foreign_table_name": "exam",
+        "foreign_column_name": "id"
+      },
+      {
+        "constraint_name": "question_pkey",
+        "constraint_type": "PRIMARY KEY",
+        "column_name": "id",
+        "foreign_table_name": "question",
+        "foreign_column_name": "id"
+      }
+    ],
+    "indexes": [
+      {
+        "indexname": "question_pkey",
+        "indexdef": "CREATE UNIQUE INDEX question_pkey ON public.question USING btree (id)"
+      }
+    ],
+    "row_count": 80
+  },
+  "questions": {
+    "columns": [
+      {
+        "column_name": "question_id",
+        "data_type": "integer",
+        "character_maximum_length": null,
+        "is_nullable": "NO",
+        "column_default": "nextval('questions_question_id_seq'::regclass)",
+        "ordinal_position": 1,
+        "udt_name": "int4",
+        "numeric_precision": 32,
+        "numeric_scale": 0
+      },
+      {
+        "column_name": "exam_id",
+        "data_type": "integer",
+        "character_maximum_length": null,
+        "is_nullable": "NO",
+        "column_default": null,
+        "ordinal_position": 2,
+        "udt_name": "int4",
+        "numeric_precision": 32,
+        "numeric_scale": 0
+      },
+      {
+        "column_name": "question_text",
+        "data_type": "text",
+        "character_maximum_length": null,
+        "is_nullable": "NO",
+        "column_default": null,
+        "ordinal_position": 3,
+        "udt_name": "text",
+        "numeric_precision": null,
+        "numeric_scale": null
+      },
+      {
+        "column_name": "question_type",
+        "data_type": "USER-DEFINED",
+        "character_maximum_length": null,
+        "is_nullable": "YES",
+        "column_default": "'multiple_choice'::enum_questions_question_type",
+        "ordinal_position": 4,
+        "udt_name": "enum_questions_question_type",
+        "numeric_precision": null,
+        "numeric_scale": null
+      },
+      {
+        "column_name": "marks",
+        "data_type": "integer",
+        "character_maximum_length": null,
+        "is_nullable": "NO",
+        "column_default": null,
+        "ordinal_position": 5,
+        "udt_name": "int4",
+        "numeric_precision": 32,
+        "numeric_scale": 0
+      },
+      {
+        "column_name": "options",
+        "data_type": "jsonb",
+        "character_maximum_length": null,
+        "is_nullable": "YES",
+        "column_default": null,
+        "ordinal_position": 6,
+        "udt_name": "jsonb",
+        "numeric_precision": null,
+        "numeric_scale": null
+      },
+      {
+        "column_name": "correct_answer",
+        "data_type": "character varying",
+        "character_maximum_length": 255,
+        "is_nullable": "YES",
+        "column_default": null,
+        "ordinal_position": 7,
+        "udt_name": "varchar",
+        "numeric_precision": null,
+        "numeric_scale": null
+      },
+      {
+        "column_name": "explanation",
+        "data_type": "text",
+        "character_maximum_length": null,
+        "is_nullable": "YES",
+        "column_default": null,
+        "ordinal_position": 8,
+        "udt_name": "text",
+        "numeric_precision": null,
+        "numeric_scale": null
+      }
+    ],
+    "constraints": [
+      {
+        "constraint_name": "questions_exam_id_fkey",
+        "constraint_type": "FOREIGN KEY",
+        "column_name": "exam_id",
+        "foreign_table_name": "exams",
+        "foreign_column_name": "exam_id"
+      },
+      {
+        "constraint_name": "questions_pkey",
+        "constraint_type": "PRIMARY KEY",
+        "column_name": "question_id",
+        "foreign_table_name": "questions",
+        "foreign_column_name": "question_id"
+      }
+    ],
+    "indexes": [
+      {
+        "indexname": "questions_pkey",
+        "indexdef": "CREATE UNIQUE INDEX questions_pkey ON public.questions USING btree (question_id)"
+      }
+    ],
+    "row_count": 0
+  },
+  "quiz": {
+    "columns": [
+      {
+        "column_name": "id",
+        "data_type": "integer",
+        "character_maximum_length": null,
+        "is_nullable": "NO",
+        "column_default": "nextval('quiz_id_seq'::regclass)",
+        "ordinal_position": 1,
+        "udt_name": "int4",
+        "numeric_precision": 32,
+        "numeric_scale": 0
+      },
+      {
+        "column_name": "title",
+        "data_type": "character varying",
+        "character_maximum_length": 200,
+        "is_nullable": "NO",
+        "column_default": null,
+        "ordinal_position": 2,
+        "udt_name": "varchar",
+        "numeric_precision": null,
+        "numeric_scale": null
+      },
+      {
+        "column_name": "subject_id",
+        "data_type": "integer",
+        "character_maximum_length": null,
+        "is_nullable": "NO",
+        "column_default": null,
+        "ordinal_position": 3,
+        "udt_name": "int4",
+        "numeric_precision": 32,
+        "numeric_scale": 0
+      },
+      {
+        "column_name": "due_date",
+        "data_type": "timestamp without time zone",
+        "character_maximum_length": null,
+        "is_nullable": "NO",
+        "column_default": null,
+        "ordinal_position": 4,
+        "udt_name": "timestamp",
+        "numeric_precision": null,
+        "numeric_scale": null
+      },
+      {
+        "column_name": "questions",
+        "data_type": "json",
+        "character_maximum_length": null,
+        "is_nullable": "NO",
+        "column_default": null,
+        "ordinal_position": 5,
+        "udt_name": "json",
+        "numeric_precision": null,
+        "numeric_scale": null
+      },
+      {
+        "column_name": "teacher_id",
+        "data_type": "integer",
+        "character_maximum_length": null,
+        "is_nullable": "NO",
+        "column_default": null,
+        "ordinal_position": 6,
+        "udt_name": "int4",
+        "numeric_precision": 32,
+        "numeric_scale": 0
+      },
+      {
+        "column_name": "created_at",
+        "data_type": "timestamp without time zone",
+        "character_maximum_length": null,
+        "is_nullable": "YES",
+        "column_default": null,
+        "ordinal_position": 7,
+        "udt_name": "timestamp",
+        "numeric_precision": null,
+        "numeric_scale": null
+      }
+    ],
+    "constraints": [
+      {
+        "constraint_name": "quiz_subject_id_fkey",
+        "constraint_type": "FOREIGN KEY",
+        "column_name": "subject_id",
+        "foreign_table_name": "subject",
+        "foreign_column_name": "id"
+      },
+      {
+        "constraint_name": "quiz_teacher_id_fkey",
+        "constraint_type": "FOREIGN KEY",
+        "column_name": "teacher_id",
+        "foreign_table_name": "user",
+        "foreign_column_name": "id"
+      },
+      {
+        "constraint_name": "quiz_pkey",
+        "constraint_type": "PRIMARY KEY",
+        "column_name": "id",
+        "foreign_table_name": "quiz",
+        "foreign_column_name": "id"
+      }
+    ],
+    "indexes": [
+      {
+        "indexname": "quiz_pkey",
+        "indexdef": "CREATE UNIQUE INDEX quiz_pkey ON public.quiz USING btree (id)"
+      }
+    ],
+    "row_count": 2
+  },
+  "session_reports": {
+    "columns": [
+      {
+        "column_name": "report_id",
+        "data_type": "integer",
+        "character_maximum_length": null,
+        "is_nullable": "NO",
+        "column_default": "nextval('session_reports_report_id_seq'::regclass)",
+        "ordinal_position": 1,
+        "udt_name": "int4",
+        "numeric_precision": 32,
+        "numeric_scale": 0
+      },
+      {
+        "column_name": "session_id",
+        "data_type": "integer",
+        "character_maximum_length": null,
+        "is_nullable": "NO",
+        "column_default": null,
+        "ordinal_position": 2,
+        "udt_name": "int4",
+        "numeric_precision": 32,
+        "numeric_scale": 0
+      },
+      {
+        "column_name": "expert_id",
+        "data_type": "integer",
+        "character_maximum_length": null,
+        "is_nullable": "NO",
+        "column_default": null,
+        "ordinal_position": 3,
+        "udt_name": "int4",
+        "numeric_precision": 32,
+        "numeric_scale": 0
+      },
+      {
+        "column_name": "report_text",
+        "data_type": "text",
+        "character_maximum_length": null,
+        "is_nullable": "NO",
+        "column_default": null,
+        "ordinal_position": 4,
+        "udt_name": "text",
+        "numeric_precision": null,
+        "numeric_scale": null
+      },
+      {
+        "column_name": "recommendations",
+        "data_type": "text",
+        "character_maximum_length": null,
+        "is_nullable": "YES",
+        "column_default": null,
+        "ordinal_position": 5,
+        "udt_name": "text",
+        "numeric_precision": null,
+        "numeric_scale": null
+      },
+      {
+        "column_name": "submitted_at",
+        "data_type": "timestamp with time zone",
+        "character_maximum_length": null,
+        "is_nullable": "YES",
+        "column_default": null,
+        "ordinal_position": 6,
+        "udt_name": "timestamptz",
+        "numeric_precision": null,
+        "numeric_scale": null
+      }
+    ],
+    "constraints": [
+      {
+        "constraint_name": "session_reports_expert_id_fkey",
+        "constraint_type": "FOREIGN KEY",
+        "column_name": "expert_id",
+        "foreign_table_name": "users",
+        "foreign_column_name": "user_id"
+      },
+      {
+        "constraint_name": "session_reports_session_id_fkey",
+        "constraint_type": "FOREIGN KEY",
+        "column_name": "session_id",
+        "foreign_table_name": "counseling_sessions",
+        "foreign_column_name": "session_id"
+      },
+      {
+        "constraint_name": "session_reports_pkey",
+        "constraint_type": "PRIMARY KEY",
+        "column_name": "report_id",
+        "foreign_table_name": "session_reports",
+        "foreign_column_name": "report_id"
+      }
+    ],
+    "indexes": [
+      {
+        "indexname": "session_reports_pkey",
+        "indexdef": "CREATE UNIQUE INDEX session_reports_pkey ON public.session_reports USING btree (report_id)"
+      }
+    ],
+    "row_count": 0
+  },
+  "student_answers": {
+    "columns": [
+      {
+        "column_name": "answer_id",
+        "data_type": "integer",
+        "character_maximum_length": null,
+        "is_nullable": "NO",
+        "column_default": "nextval('student_answers_answer_id_seq'::regclass)",
+        "ordinal_position": 1,
+        "udt_name": "int4",
+        "numeric_precision": 32,
+        "numeric_scale": 0
+      },
+      {
+        "column_name": "attempt_id",
+        "data_type": "integer",
+        "character_maximum_length": null,
+        "is_nullable": "NO",
+        "column_default": null,
+        "ordinal_position": 2,
+        "udt_name": "int4",
+        "numeric_precision": 32,
+        "numeric_scale": 0
+      },
+      {
+        "column_name": "question_id",
+        "data_type": "integer",
+        "character_maximum_length": null,
+        "is_nullable": "NO",
+        "column_default": null,
+        "ordinal_position": 3,
+        "udt_name": "int4",
+        "numeric_precision": 32,
+        "numeric_scale": 0
+      },
+      {
+        "column_name": "answer",
+        "data_type": "text",
+        "character_maximum_length": null,
+        "is_nullable": "YES",
+        "column_default": null,
+        "ordinal_position": 4,
+        "udt_name": "text",
+        "numeric_precision": null,
+        "numeric_scale": null
+      },
+      {
+        "column_name": "is_correct",
+        "data_type": "boolean",
+        "character_maximum_length": null,
+        "is_nullable": "YES",
+        "column_default": null,
+        "ordinal_position": 5,
+        "udt_name": "bool",
+        "numeric_precision": null,
+        "numeric_scale": null
+      },
+      {
+        "column_name": "marks_awarded",
+        "data_type": "integer",
+        "character_maximum_length": null,
+        "is_nullable": "YES",
+        "column_default": "0",
+        "ordinal_position": 6,
+        "udt_name": "int4",
+        "numeric_precision": 32,
+        "numeric_scale": 0
+      }
+    ],
+    "constraints": [
+      {
+        "constraint_name": "student_answers_attempt_id_fkey",
+        "constraint_type": "FOREIGN KEY",
+        "column_name": "attempt_id",
+        "foreign_table_name": "exam_attempts",
+        "foreign_column_name": "attempt_id"
+      },
+      {
+        "constraint_name": "student_answers_question_id_fkey",
+        "constraint_type": "FOREIGN KEY",
+        "column_name": "question_id",
+        "foreign_table_name": "questions",
+        "foreign_column_name": "question_id"
+      },
+      {
+        "constraint_name": "student_answers_pkey",
+        "constraint_type": "PRIMARY KEY",
+        "column_name": "answer_id",
+        "foreign_table_name": "student_answers",
+        "foreign_column_name": "answer_id"
+      }
+    ],
+    "indexes": [
+      {
+        "indexname": "student_answers_pkey",
+        "indexdef": "CREATE UNIQUE INDEX student_answers_pkey ON public.student_answers USING btree (answer_id)"
+      }
+    ],
+    "row_count": 0
+  },
+  "student_profiles": {
+    "columns": [
+      {
+        "column_name": "student_id",
+        "data_type": "integer",
+        "character_maximum_length": null,
+        "is_nullable": "NO",
+        "column_default": null,
+        "ordinal_position": 1,
+        "udt_name": "int4",
+        "numeric_precision": 32,
+        "numeric_scale": 0
+      },
+      {
+        "column_name": "grade_level",
+        "data_type": "character varying",
+        "character_maximum_length": 50,
+        "is_nullable": "YES",
+        "column_default": null,
+        "ordinal_position": 2,
+        "udt_name": "varchar",
+        "numeric_precision": null,
+        "numeric_scale": null
+      },
+      {
+        "column_name": "school_name",
+        "data_type": "character varying",
+        "character_maximum_length": 255,
+        "is_nullable": "YES",
+        "column_default": null,
+        "ordinal_position": 3,
+        "udt_name": "varchar",
+        "numeric_precision": null,
+        "numeric_scale": null
+      },
+      {
+        "column_name": "parent_email",
+        "data_type": "character varying",
+        "character_maximum_length": 255,
+        "is_nullable": "YES",
+        "column_default": null,
+        "ordinal_position": 4,
+        "udt_name": "varchar",
+        "numeric_precision": null,
+        "numeric_scale": null
+      },
+      {
+        "column_name": "learning_goals",
+        "data_type": "text",
+        "character_maximum_length": null,
+        "is_nullable": "YES",
+        "column_default": null,
+        "ordinal_position": 5,
+        "udt_name": "text",
+        "numeric_precision": null,
+        "numeric_scale": null
+      },
+      {
+        "column_name": "user_id",
+        "data_type": "integer",
+        "character_maximum_length": null,
+        "is_nullable": "YES",
+        "column_default": null,
+        "ordinal_position": 6,
+        "udt_name": "int4",
+        "numeric_precision": 32,
+        "numeric_scale": 0
+      }
+    ],
+    "constraints": [
+      {
+        "constraint_name": "student_profiles_user_id_fkey",
+        "constraint_type": "FOREIGN KEY",
+        "column_name": "user_id",
+        "foreign_table_name": "users",
+        "foreign_column_name": "user_id"
+      },
+      {
+        "constraint_name": "student_profiles_pkey",
+        "constraint_type": "PRIMARY KEY",
+        "column_name": "student_id",
+        "foreign_table_name": "student_profiles",
+        "foreign_column_name": "student_id"
+      }
+    ],
+    "indexes": [
+      {
+        "indexname": "student_profiles_pkey",
+        "indexdef": "CREATE UNIQUE INDEX student_profiles_pkey ON public.student_profiles USING btree (student_id)"
+      }
+    ],
+    "row_count": 0
+  },
+  "student_report": {
+    "columns": [
+      {
+        "column_name": "id",
+        "data_type": "integer",
+        "character_maximum_length": null,
+        "is_nullable": "NO",
+        "column_default": "nextval('student_report_id_seq'::regclass)",
+        "ordinal_position": 1,
+        "udt_name": "int4",
+        "numeric_precision": 32,
+        "numeric_scale": 0
+      },
+      {
+        "column_name": "student_id",
+        "data_type": "integer",
+        "character_maximum_length": null,
+        "is_nullable": "YES",
+        "column_default": null,
+        "ordinal_position": 2,
+        "udt_name": "int4",
+        "numeric_precision": 32,
+        "numeric_scale": 0
+      },
+      {
+        "column_name": "teacher_id",
+        "data_type": "integer",
+        "character_maximum_length": null,
+        "is_nullable": "YES",
+        "column_default": null,
+        "ordinal_position": 3,
+        "udt_name": "int4",
+        "numeric_precision": 32,
+        "numeric_scale": 0
+      },
+      {
+        "column_name": "exam_id",
+        "data_type": "integer",
+        "character_maximum_length": null,
+        "is_nullable": "YES",
+        "column_default": null,
+        "ordinal_position": 4,
+        "udt_name": "int4",
+        "numeric_precision": 32,
+        "numeric_scale": 0
+      },
+      {
+        "column_name": "report_text",
+        "data_type": "text",
+        "character_maximum_length": null,
+        "is_nullable": "NO",
+        "column_default": null,
+        "ordinal_position": 5,
+        "udt_name": "text",
+        "numeric_precision": null,
+        "numeric_scale": null
+      },
+      {
+        "column_name": "report_type",
+        "data_type": "character varying",
+        "character_maximum_length": 20,
+        "is_nullable": "YES",
+        "column_default": null,
+        "ordinal_position": 6,
+        "udt_name": "varchar",
+        "numeric_precision": null,
+        "numeric_scale": null
+      },
+      {
+        "column_name": "sent_at",
+        "data_type": "timestamp without time zone",
+        "character_maximum_length": null,
+        "is_nullable": "YES",
+        "column_default": null,
+        "ordinal_position": 7,
+        "udt_name": "timestamp",
+        "numeric_precision": null,
+        "numeric_scale": null
+      }
+    ],
+    "constraints": [
+      {
+        "constraint_name": "student_report_exam_id_fkey",
+        "constraint_type": "FOREIGN KEY",
+        "column_name": "exam_id",
+        "foreign_table_name": "exam",
+        "foreign_column_name": "id"
+      },
+      {
+        "constraint_name": "student_report_student_id_fkey",
+        "constraint_type": "FOREIGN KEY",
+        "column_name": "student_id",
+        "foreign_table_name": "user",
+        "foreign_column_name": "id"
+      },
+      {
+        "constraint_name": "student_report_teacher_id_fkey",
+        "constraint_type": "FOREIGN KEY",
+        "column_name": "teacher_id",
+        "foreign_table_name": "user",
+        "foreign_column_name": "id"
+      },
+      {
+        "constraint_name": "student_report_pkey",
+        "constraint_type": "PRIMARY KEY",
+        "column_name": "id",
+        "foreign_table_name": "student_report",
+        "foreign_column_name": "id"
+      }
+    ],
+    "indexes": [
+      {
+        "indexname": "student_report_pkey",
+        "indexdef": "CREATE UNIQUE INDEX student_report_pkey ON public.student_report USING btree (id)"
+      }
+    ],
+    "row_count": 29
+  },
+  "student_subject": {
+    "columns": [
+      {
+        "column_name": "student_id",
+        "data_type": "integer",
+        "character_maximum_length": null,
+        "is_nullable": "NO",
+        "column_default": null,
+        "ordinal_position": 1,
+        "udt_name": "int4",
+        "numeric_precision": 32,
+        "numeric_scale": 0
+      },
+      {
+        "column_name": "subject_id",
+        "data_type": "integer",
+        "character_maximum_length": null,
+        "is_nullable": "NO",
+        "column_default": null,
+        "ordinal_position": 2,
+        "udt_name": "int4",
+        "numeric_precision": 32,
+        "numeric_scale": 0
+      },
+      {
+        "column_name": "enrolled_at",
+        "data_type": "timestamp without time zone",
+        "character_maximum_length": null,
+        "is_nullable": "YES",
+        "column_default": null,
+        "ordinal_position": 3,
+        "udt_name": "timestamp",
+        "numeric_precision": null,
+        "numeric_scale": null
+      }
+    ],
+    "constraints": [
+      {
+        "constraint_name": "student_subject_student_id_fkey",
+        "constraint_type": "FOREIGN KEY",
+        "column_name": "student_id",
+        "foreign_table_name": "user",
+        "foreign_column_name": "id"
+      },
+      {
+        "constraint_name": "student_subject_subject_id_fkey",
+        "constraint_type": "FOREIGN KEY",
+        "column_name": "subject_id",
+        "foreign_table_name": "subject",
+        "foreign_column_name": "id"
+      },
+      {
+        "constraint_name": "student_subject_pkey",
+        "constraint_type": "PRIMARY KEY",
+        "column_name": "student_id",
+        "foreign_table_name": "student_subject",
+        "foreign_column_name": "student_id"
+      },
+      {
+        "constraint_name": "student_subject_pkey",
+        "constraint_type": "PRIMARY KEY",
+        "column_name": "student_id",
+        "foreign_table_name": "student_subject",
+        "foreign_column_name": "subject_id"
+      },
+      {
+        "constraint_name": "student_subject_pkey",
+        "constraint_type": "PRIMARY KEY",
+        "column_name": "subject_id",
+        "foreign_table_name": "student_subject",
+        "foreign_column_name": "student_id"
+      },
+      {
+        "constraint_name": "student_subject_pkey",
+        "constraint_type": "PRIMARY KEY",
+        "column_name": "subject_id",
+        "foreign_table_name": "student_subject",
+        "foreign_column_name": "subject_id"
+      }
+    ],
+    "indexes": [
+      {
+        "indexname": "student_subject_pkey",
+        "indexdef": "CREATE UNIQUE INDEX student_subject_pkey ON public.student_subject USING btree (student_id, subject_id)"
+      }
+    ],
+    "row_count": 6
+  },
+  "subject": {
+    "columns": [
+      {
+        "column_name": "id",
+        "data_type": "integer",
+        "character_maximum_length": null,
+        "is_nullable": "NO",
+        "column_default": "nextval('subject_id_seq'::regclass)",
+        "ordinal_position": 1,
+        "udt_name": "int4",
+        "numeric_precision": 32,
+        "numeric_scale": 0
+      },
+      {
+        "column_name": "name",
+        "data_type": "character varying",
+        "character_maximum_length": 100,
+        "is_nullable": "NO",
+        "column_default": null,
+        "ordinal_position": 2,
+        "udt_name": "varchar",
+        "numeric_precision": null,
+        "numeric_scale": null
+      },
+      {
+        "column_name": "class_name",
+        "data_type": "character varying",
+        "character_maximum_length": 50,
+        "is_nullable": "NO",
+        "column_default": null,
+        "ordinal_position": 3,
+        "udt_name": "varchar",
+        "numeric_precision": null,
+        "numeric_scale": null
+      },
+      {
+        "column_name": "teacher_id",
+        "data_type": "integer",
+        "character_maximum_length": null,
+        "is_nullable": "NO",
+        "column_default": null,
+        "ordinal_position": 4,
+        "udt_name": "int4",
+        "numeric_precision": 32,
+        "numeric_scale": 0
+      },
+      {
+        "column_name": "created_at",
+        "data_type": "timestamp without time zone",
+        "character_maximum_length": null,
+        "is_nullable": "YES",
+        "column_default": null,
+        "ordinal_position": 5,
+        "udt_name": "timestamp",
+        "numeric_precision": null,
+        "numeric_scale": null
+      }
+    ],
+    "constraints": [
+      {
+        "constraint_name": "subject_teacher_id_fkey",
+        "constraint_type": "FOREIGN KEY",
+        "column_name": "teacher_id",
+        "foreign_table_name": "user",
+        "foreign_column_name": "id"
+      },
+      {
+        "constraint_name": "subject_pkey",
+        "constraint_type": "PRIMARY KEY",
+        "column_name": "id",
+        "foreign_table_name": "subject",
+        "foreign_column_name": "id"
+      }
+    ],
+    "indexes": [
+      {
+        "indexname": "subject_pkey",
+        "indexdef": "CREATE UNIQUE INDEX subject_pkey ON public.subject USING btree (id)"
+      }
+    ],
+    "row_count": 4
+  },
+  "teacher_profiles": {
+    "columns": [
+      {
+        "column_name": "teacher_id",
+        "data_type": "integer",
+        "character_maximum_length": null,
+        "is_nullable": "NO",
+        "column_default": null,
+        "ordinal_position": 1,
+        "udt_name": "int4",
+        "numeric_precision": 32,
+        "numeric_scale": 0
+      },
+      {
+        "column_name": "qualifications",
+        "data_type": "text",
+        "character_maximum_length": null,
+        "is_nullable": "YES",
+        "column_default": null,
+        "ordinal_position": 2,
+        "udt_name": "text",
+        "numeric_precision": null,
+        "numeric_scale": null
+      },
+      {
+        "column_name": "subjects",
+        "data_type": "ARRAY",
+        "character_maximum_length": null,
+        "is_nullable": "YES",
+        "column_default": null,
+        "ordinal_position": 3,
+        "udt_name": "_varchar",
+        "numeric_precision": null,
+        "numeric_scale": null
+      },
+      {
+        "column_name": "years_experience",
+        "data_type": "integer",
+        "character_maximum_length": null,
+        "is_nullable": "YES",
+        "column_default": null,
+        "ordinal_position": 4,
+        "udt_name": "int4",
+        "numeric_precision": 32,
+        "numeric_scale": 0
+      },
+      {
+        "column_name": "bio",
+        "data_type": "text",
+        "character_maximum_length": null,
+        "is_nullable": "YES",
+        "column_default": null,
+        "ordinal_position": 5,
+        "udt_name": "text",
+        "numeric_precision": null,
+        "numeric_scale": null
+      },
+      {
+        "column_name": "user_id",
+        "data_type": "integer",
+        "character_maximum_length": null,
+        "is_nullable": "YES",
+        "column_default": null,
+        "ordinal_position": 6,
+        "udt_name": "int4",
+        "numeric_precision": 32,
+        "numeric_scale": 0
+      }
+    ],
+    "constraints": [
+      {
+        "constraint_name": "teacher_profiles_user_id_fkey",
+        "constraint_type": "FOREIGN KEY",
+        "column_name": "user_id",
+        "foreign_table_name": "users",
+        "foreign_column_name": "user_id"
+      },
+      {
+        "constraint_name": "teacher_profiles_pkey",
+        "constraint_type": "PRIMARY KEY",
+        "column_name": "teacher_id",
+        "foreign_table_name": "teacher_profiles",
+        "foreign_column_name": "teacher_id"
+      }
+    ],
+    "indexes": [
+      {
+        "indexname": "teacher_profiles_pkey",
+        "indexdef": "CREATE UNIQUE INDEX teacher_profiles_pkey ON public.teacher_profiles USING btree (teacher_id)"
+      }
+    ],
+    "row_count": 0
+  },
+  "test": {
+    "columns": [
+      {
+        "column_name": "id",
+        "data_type": "integer",
+        "character_maximum_length": null,
+        "is_nullable": "NO",
+        "column_default": "nextval('test_id_seq'::regclass)",
+        "ordinal_position": 1,
+        "udt_name": "int4",
+        "numeric_precision": 32,
+        "numeric_scale": 0
+      },
+      {
+        "column_name": "title",
+        "data_type": "character varying",
+        "character_maximum_length": 200,
+        "is_nullable": "NO",
+        "column_default": null,
+        "ordinal_position": 2,
+        "udt_name": "varchar",
+        "numeric_precision": null,
+        "numeric_scale": null
+      },
+      {
+        "column_name": "subject_id",
+        "data_type": "integer",
+        "character_maximum_length": null,
+        "is_nullable": "NO",
+        "column_default": null,
+        "ordinal_position": 3,
+        "udt_name": "int4",
+        "numeric_precision": 32,
+        "numeric_scale": 0
+      },
+      {
+        "column_name": "test_date",
+        "data_type": "timestamp without time zone",
+        "character_maximum_length": null,
+        "is_nullable": "NO",
+        "column_default": null,
+        "ordinal_position": 4,
+        "udt_name": "timestamp",
+        "numeric_precision": null,
+        "numeric_scale": null
+      },
+      {
+        "column_name": "duration",
+        "data_type": "integer",
+        "character_maximum_length": null,
+        "is_nullable": "NO",
+        "column_default": null,
+        "ordinal_position": 5,
+        "udt_name": "int4",
+        "numeric_precision": 32,
+        "numeric_scale": 0
+      },
+      {
+        "column_name": "questions",
+        "data_type": "json",
+        "character_maximum_length": null,
+        "is_nullable": "NO",
+        "column_default": null,
+        "ordinal_position": 6,
+        "udt_name": "json",
+        "numeric_precision": null,
+        "numeric_scale": null
+      },
+      {
+        "column_name": "teacher_id",
+        "data_type": "integer",
+        "character_maximum_length": null,
+        "is_nullable": "NO",
+        "column_default": null,
+        "ordinal_position": 7,
+        "udt_name": "int4",
+        "numeric_precision": 32,
+        "numeric_scale": 0
+      },
+      {
+        "column_name": "created_at",
+        "data_type": "timestamp without time zone",
+        "character_maximum_length": null,
+        "is_nullable": "YES",
+        "column_default": null,
+        "ordinal_position": 8,
+        "udt_name": "timestamp",
+        "numeric_precision": null,
+        "numeric_scale": null
+      }
+    ],
+    "constraints": [
+      {
+        "constraint_name": "test_subject_id_fkey",
+        "constraint_type": "FOREIGN KEY",
+        "column_name": "subject_id",
+        "foreign_table_name": "subject",
+        "foreign_column_name": "id"
+      },
+      {
+        "constraint_name": "test_teacher_id_fkey",
+        "constraint_type": "FOREIGN KEY",
+        "column_name": "teacher_id",
+        "foreign_table_name": "user",
+        "foreign_column_name": "id"
+      },
+      {
+        "constraint_name": "test_pkey",
+        "constraint_type": "PRIMARY KEY",
+        "column_name": "id",
+        "foreign_table_name": "test",
+        "foreign_column_name": "id"
+      }
+    ],
+    "indexes": [
+      {
+        "indexname": "test_pkey",
+        "indexdef": "CREATE UNIQUE INDEX test_pkey ON public.test USING btree (id)"
+      }
+    ],
+    "row_count": 2
+  },
+  "user": {
+    "columns": [
+      {
+        "column_name": "id",
+        "data_type": "integer",
+        "character_maximum_length": null,
+        "is_nullable": "NO",
+        "column_default": "nextval('user_id_seq'::regclass)",
+        "ordinal_position": 1,
+        "udt_name": "int4",
+        "numeric_precision": 32,
+        "numeric_scale": 0
+      },
+      {
+        "column_name": "username",
+        "data_type": "character varying",
+        "character_maximum_length": 80,
+        "is_nullable": "NO",
+        "column_default": null,
+        "ordinal_position": 2,
+        "udt_name": "varchar",
+        "numeric_precision": null,
+        "numeric_scale": null
+      },
+      {
+        "column_name": "email",
+        "data_type": "character varying",
+        "character_maximum_length": 120,
+        "is_nullable": "NO",
+        "column_default": null,
+        "ordinal_position": 3,
+        "udt_name": "varchar",
+        "numeric_precision": null,
+        "numeric_scale": null
+      },
+      {
+        "column_name": "password_hash",
+        "data_type": "character varying",
+        "character_maximum_length": 128,
+        "is_nullable": "YES",
+        "column_default": null,
+        "ordinal_position": 4,
+        "udt_name": "varchar",
+        "numeric_precision": null,
+        "numeric_scale": null
+      },
+      {
+        "column_name": "role",
+        "data_type": "character varying",
+        "character_maximum_length": 20,
+        "is_nullable": "YES",
+        "column_default": null,
+        "ordinal_position": 5,
+        "udt_name": "varchar",
+        "numeric_precision": null,
+        "numeric_scale": null
+      },
+      {
+        "column_name": "google_id",
+        "data_type": "character varying",
+        "character_maximum_length": 120,
+        "is_nullable": "YES",
+        "column_default": null,
+        "ordinal_position": 6,
+        "udt_name": "varchar",
+        "numeric_precision": null,
+        "numeric_scale": null
+      },
+      {
+        "column_name": "created_at",
+        "data_type": "timestamp without time zone",
+        "character_maximum_length": null,
+        "is_nullable": "YES",
+        "column_default": null,
+        "ordinal_position": 7,
+        "udt_name": "timestamp",
+        "numeric_precision": null,
+        "numeric_scale": null
+      }
+    ],
+    "constraints": [
+      {
+        "constraint_name": "user_pkey",
+        "constraint_type": "PRIMARY KEY",
+        "column_name": "id",
+        "foreign_table_name": "user",
+        "foreign_column_name": "id"
+      },
+      {
+        "constraint_name": "user_email_key",
+        "constraint_type": "UNIQUE",
+        "column_name": "email",
+        "foreign_table_name": "user",
+        "foreign_column_name": "email"
+      },
+      {
+        "constraint_name": "user_google_id_key",
+        "constraint_type": "UNIQUE",
+        "column_name": "google_id",
+        "foreign_table_name": "user",
+        "foreign_column_name": "google_id"
+      },
+      {
+        "constraint_name": "user_username_key",
+        "constraint_type": "UNIQUE",
+        "column_name": "username",
+        "foreign_table_name": "user",
+        "foreign_column_name": "username"
+      }
+    ],
+    "indexes": [
+      {
+        "indexname": "user_email_key",
+        "indexdef": "CREATE UNIQUE INDEX user_email_key ON public.\"user\" USING btree (email)"
+      },
+      {
+        "indexname": "user_google_id_key",
+        "indexdef": "CREATE UNIQUE INDEX user_google_id_key ON public.\"user\" USING btree (google_id)"
+      },
+      {
+        "indexname": "user_pkey",
+        "indexdef": "CREATE UNIQUE INDEX user_pkey ON public.\"user\" USING btree (id)"
+      },
+      {
+        "indexname": "user_username_key",
+        "indexdef": "CREATE UNIQUE INDEX user_username_key ON public.\"user\" USING btree (username)"
+      }
+    ],
+    "row_count": 1
+  },
+  "users": {
+    "columns": [
+      {
+        "column_name": "user_id",
+        "data_type": "integer",
+        "character_maximum_length": null,
+        "is_nullable": "NO",
+        "column_default": "nextval('users_user_id_seq'::regclass)",
+        "ordinal_position": 1,
+        "udt_name": "int4",
+        "numeric_precision": 32,
+        "numeric_scale": 0
+      },
+      {
+        "column_name": "email",
+        "data_type": "character varying",
+        "character_maximum_length": 255,
+        "is_nullable": "NO",
+        "column_default": null,
+        "ordinal_position": 2,
+        "udt_name": "varchar",
+        "numeric_precision": null,
+        "numeric_scale": null
+      },
+      {
+        "column_name": "password_hash",
+        "data_type": "character varying",
+        "character_maximum_length": 255,
+        "is_nullable": "YES",
+        "column_default": null,
+        "ordinal_position": 3,
+        "udt_name": "varchar",
+        "numeric_precision": null,
+        "numeric_scale": null
+      },
+      {
+        "column_name": "first_name",
+        "data_type": "character varying",
+        "character_maximum_length": 100,
+        "is_nullable": "NO",
+        "column_default": null,
+        "ordinal_position": 4,
+        "udt_name": "varchar",
+        "numeric_precision": null,
+        "numeric_scale": null
+      },
+      {
+        "column_name": "last_name",
+        "data_type": "character varying",
+        "character_maximum_length": 100,
+        "is_nullable": "NO",
+        "column_default": null,
+        "ordinal_position": 5,
+        "udt_name": "varchar",
+        "numeric_precision": null,
+        "numeric_scale": null
+      },
+      {
+        "column_name": "role",
+        "data_type": "USER-DEFINED",
+        "character_maximum_length": null,
+        "is_nullable": "NO",
+        "column_default": null,
+        "ordinal_position": 6,
+        "udt_name": "enum_users_role",
+        "numeric_precision": null,
+        "numeric_scale": null
+      },
+      {
+        "column_name": "google_id",
+        "data_type": "character varying",
+        "character_maximum_length": 255,
+        "is_nullable": "YES",
+        "column_default": null,
+        "ordinal_position": 7,
+        "udt_name": "varchar",
+        "numeric_precision": null,
+        "numeric_scale": null
+      },
+      {
+        "column_name": "profile_picture_url",
+        "data_type": "character varying",
+        "character_maximum_length": 255,
+        "is_nullable": "YES",
+        "column_default": null,
+        "ordinal_position": 8,
+        "udt_name": "varchar",
+        "numeric_precision": null,
+        "numeric_scale": null
+      },
+      {
+        "column_name": "date_of_birth",
+        "data_type": "timestamp with time zone",
+        "character_maximum_length": null,
+        "is_nullable": "YES",
+        "column_default": null,
+        "ordinal_position": 9,
+        "udt_name": "timestamptz",
+        "numeric_precision": null,
+        "numeric_scale": null
+      },
+      {
+        "column_name": "phone_number",
+        "data_type": "character varying",
+        "character_maximum_length": 20,
+        "is_nullable": "YES",
+        "column_default": null,
+        "ordinal_position": 10,
+        "udt_name": "varchar",
+        "numeric_precision": null,
+        "numeric_scale": null
+      },
+      {
+        "column_name": "address",
+        "data_type": "text",
+        "character_maximum_length": null,
+        "is_nullable": "YES",
+        "column_default": null,
+        "ordinal_position": 11,
+        "udt_name": "text",
+        "numeric_precision": null,
+        "numeric_scale": null
+      },
+      {
+        "column_name": "is_verified",
+        "data_type": "boolean",
+        "character_maximum_length": null,
+        "is_nullable": "YES",
+        "column_default": "false",
+        "ordinal_position": 12,
+        "udt_name": "bool",
+        "numeric_precision": null,
+        "numeric_scale": null
+      },
+      {
+        "column_name": "verification_token",
+        "data_type": "character varying",
+        "character_maximum_length": 255,
+        "is_nullable": "YES",
+        "column_default": null,
+        "ordinal_position": 13,
+        "udt_name": "varchar",
+        "numeric_precision": null,
+        "numeric_scale": null
+      },
+      {
+        "column_name": "reset_token",
+        "data_type": "character varying",
+        "character_maximum_length": 255,
+        "is_nullable": "YES",
+        "column_default": null,
+        "ordinal_position": 14,
+        "udt_name": "varchar",
+        "numeric_precision": null,
+        "numeric_scale": null
+      },
+      {
+        "column_name": "reset_token_expiry",
+        "data_type": "timestamp with time zone",
+        "character_maximum_length": null,
+        "is_nullable": "YES",
+        "column_default": null,
+        "ordinal_position": 15,
+        "udt_name": "timestamptz",
+        "numeric_precision": null,
+        "numeric_scale": null
+      },
+      {
+        "column_name": "created_at",
+        "data_type": "timestamp with time zone",
+        "character_maximum_length": null,
+        "is_nullable": "NO",
+        "column_default": null,
+        "ordinal_position": 16,
+        "udt_name": "timestamptz",
+        "numeric_precision": null,
+        "numeric_scale": null
+      },
+      {
+        "column_name": "updated_at",
+        "data_type": "timestamp with time zone",
+        "character_maximum_length": null,
+        "is_nullable": "NO",
+        "column_default": null,
+        "ordinal_position": 17,
+        "udt_name": "timestamptz",
+        "numeric_precision": null,
+        "numeric_scale": null
+      }
+    ],
+    "constraints": [
+      {
+        "constraint_name": "users_pkey",
+        "constraint_type": "PRIMARY KEY",
+        "column_name": "user_id",
+        "foreign_table_name": "users",
+        "foreign_column_name": "user_id"
+      },
+      {
+        "constraint_name": "users_email_key1",
+        "constraint_type": "UNIQUE",
+        "column_name": "email",
+        "foreign_table_name": "users",
+        "foreign_column_name": "email"
+      },
+      {
+        "constraint_name": "users_email_key10",
+        "constraint_type": "UNIQUE",
+        "column_name": "email",
+        "foreign_table_name": "users",
+        "foreign_column_name": "email"
+      },
+      {
+        "constraint_name": "users_email_key11",
+        "constraint_type": "UNIQUE",
+        "column_name": "email",
+        "foreign_table_name": "users",
+        "foreign_column_name": "email"
+      },
+      {
+        "constraint_name": "users_email_key12",
+        "constraint_type": "UNIQUE",
+        "column_name": "email",
+        "foreign_table_name": "users",
+        "foreign_column_name": "email"
+      },
+      {
+        "constraint_name": "users_email_key13",
+        "constraint_type": "UNIQUE",
+        "column_name": "email",
+        "foreign_table_name": "users",
+        "foreign_column_name": "email"
+      },
+      {
+        "constraint_name": "users_email_key14",
+        "constraint_type": "UNIQUE",
+        "column_name": "email",
+        "foreign_table_name": "users",
+        "foreign_column_name": "email"
+      },
+      {
+        "constraint_name": "users_email_key15",
+        "constraint_type": "UNIQUE",
+        "column_name": "email",
+        "foreign_table_name": "users",
+        "foreign_column_name": "email"
+      },
+      {
+        "constraint_name": "users_email_key16",
+        "constraint_type": "UNIQUE",
+        "column_name": "email",
+        "foreign_table_name": "users",
+        "foreign_column_name": "email"
+      },
+      {
+        "constraint_name": "users_email_key17",
+        "constraint_type": "UNIQUE",
+        "column_name": "email",
+        "foreign_table_name": "users",
+        "foreign_column_name": "email"
+      },
+      {
+        "constraint_name": "users_email_key18",
+        "constraint_type": "UNIQUE",
+        "column_name": "email",
+        "foreign_table_name": "users",
+        "foreign_column_name": "email"
+      },
+      {
+        "constraint_name": "users_email_key19",
+        "constraint_type": "UNIQUE",
+        "column_name": "email",
+        "foreign_table_name": "users",
+        "foreign_column_name": "email"
+      },
+      {
+        "constraint_name": "users_email_key2",
+        "constraint_type": "UNIQUE",
+        "column_name": "email",
+        "foreign_table_name": "users",
+        "foreign_column_name": "email"
+      },
+      {
+        "constraint_name": "users_email_key20",
+        "constraint_type": "UNIQUE",
+        "column_name": "email",
+        "foreign_table_name": "users",
+        "foreign_column_name": "email"
+      },
+      {
+        "constraint_name": "users_email_key21",
+        "constraint_type": "UNIQUE",
+        "column_name": "email",
+        "foreign_table_name": "users",
+        "foreign_column_name": "email"
+      },
+      {
+        "constraint_name": "users_email_key22",
+        "constraint_type": "UNIQUE",
+        "column_name": "email",
+        "foreign_table_name": "users",
+        "foreign_column_name": "email"
+      },
+      {
+        "constraint_name": "users_email_key23",
+        "constraint_type": "UNIQUE",
+        "column_name": "email",
+        "foreign_table_name": "users",
+        "foreign_column_name": "email"
+      },
+      {
+        "constraint_name": "users_email_key3",
+        "constraint_type": "UNIQUE",
+        "column_name": "email",
+        "foreign_table_name": "users",
+        "foreign_column_name": "email"
+      },
+      {
+        "constraint_name": "users_email_key4",
+        "constraint_type": "UNIQUE",
+        "column_name": "email",
+        "foreign_table_name": "users",
+        "foreign_column_name": "email"
+      },
+      {
+        "constraint_name": "users_email_key5",
+        "constraint_type": "UNIQUE",
+        "column_name": "email",
+        "foreign_table_name": "users",
+        "foreign_column_name": "email"
+      },
+      {
+        "constraint_name": "users_email_key6",
+        "constraint_type": "UNIQUE",
+        "column_name": "email",
+        "foreign_table_name": "users",
+        "foreign_column_name": "email"
+      },
+      {
+        "constraint_name": "users_email_key7",
+        "constraint_type": "UNIQUE",
+        "column_name": "email",
+        "foreign_table_name": "users",
+        "foreign_column_name": "email"
+      },
+      {
+        "constraint_name": "users_email_key8",
+        "constraint_type": "UNIQUE",
+        "column_name": "email",
+        "foreign_table_name": "users",
+        "foreign_column_name": "email"
+      },
+      {
+        "constraint_name": "users_email_key9",
+        "constraint_type": "UNIQUE",
+        "column_name": "email",
+        "foreign_table_name": "users",
+        "foreign_column_name": "email"
+      },
+      {
+        "constraint_name": "users_google_id_key",
+        "constraint_type": "UNIQUE",
+        "column_name": "google_id",
+        "foreign_table_name": "users",
+        "foreign_column_name": "google_id"
+      },
+      {
+        "constraint_name": "users_google_id_key1",
+        "constraint_type": "UNIQUE",
+        "column_name": "google_id",
+        "foreign_table_name": "users",
+        "foreign_column_name": "google_id"
+      },
+      {
+        "constraint_name": "users_google_id_key10",
+        "constraint_type": "UNIQUE",
+        "column_name": "google_id",
+        "foreign_table_name": "users",
+        "foreign_column_name": "google_id"
+      },
+      {
+        "constraint_name": "users_google_id_key11",
+        "constraint_type": "UNIQUE",
+        "column_name": "google_id",
+        "foreign_table_name": "users",
+        "foreign_column_name": "google_id"
+      },
+      {
+        "constraint_name": "users_google_id_key12",
+        "constraint_type": "UNIQUE",
+        "column_name": "google_id",
+        "foreign_table_name": "users",
+        "foreign_column_name": "google_id"
+      },
+      {
+        "constraint_name": "users_google_id_key13",
+        "constraint_type": "UNIQUE",
+        "column_name": "google_id",
+        "foreign_table_name": "users",
+        "foreign_column_name": "google_id"
+      },
+      {
+        "constraint_name": "users_google_id_key14",
+        "constraint_type": "UNIQUE",
+        "column_name": "google_id",
+        "foreign_table_name": "users",
+        "foreign_column_name": "google_id"
+      },
+      {
+        "constraint_name": "users_google_id_key15",
+        "constraint_type": "UNIQUE",
+        "column_name": "google_id",
+        "foreign_table_name": "users",
+        "foreign_column_name": "google_id"
+      },
+      {
+        "constraint_name": "users_google_id_key16",
+        "constraint_type": "UNIQUE",
+        "column_name": "google_id",
+        "foreign_table_name": "users",
+        "foreign_column_name": "google_id"
+      },
+      {
+        "constraint_name": "users_google_id_key17",
+        "constraint_type": "UNIQUE",
+        "column_name": "google_id",
+        "foreign_table_name": "users",
+        "foreign_column_name": "google_id"
+      },
+      {
+        "constraint_name": "users_google_id_key18",
+        "constraint_type": "UNIQUE",
+        "column_name": "google_id",
+        "foreign_table_name": "users",
+        "foreign_column_name": "google_id"
+      },
+      {
+        "constraint_name": "users_google_id_key19",
+        "constraint_type": "UNIQUE",
+        "column_name": "google_id",
+        "foreign_table_name": "users",
+        "foreign_column_name": "google_id"
+      },
+      {
+        "constraint_name": "users_google_id_key2",
+        "constraint_type": "UNIQUE",
+        "column_name": "google_id",
+        "foreign_table_name": "users",
+        "foreign_column_name": "google_id"
+      },
+      {
+        "constraint_name": "users_google_id_key20",
+        "constraint_type": "UNIQUE",
+        "column_name": "google_id",
+        "foreign_table_name": "users",
+        "foreign_column_name": "google_id"
+      },
+      {
+        "constraint_name": "users_google_id_key21",
+        "constraint_type": "UNIQUE",
+        "column_name": "google_id",
+        "foreign_table_name": "users",
+        "foreign_column_name": "google_id"
+      },
+      {
+        "constraint_name": "users_google_id_key22",
+        "constraint_type": "UNIQUE",
+        "column_name": "google_id",
+        "foreign_table_name": "users",
+        "foreign_column_name": "google_id"
+      },
+      {
+        "constraint_name": "users_google_id_key23",
+        "constraint_type": "UNIQUE",
+        "column_name": "google_id",
+        "foreign_table_name": "users",
+        "foreign_column_name": "google_id"
+      },
+      {
+        "constraint_name": "users_google_id_key3",
+        "constraint_type": "UNIQUE",
+        "column_name": "google_id",
+        "foreign_table_name": "users",
+        "foreign_column_name": "google_id"
+      },
+      {
+        "constraint_name": "users_email_key",
+        "constraint_type": "UNIQUE",
+        "column_name": "email",
+        "foreign_table_name": "users",
+        "foreign_column_name": "email"
+      },
+      {
+        "constraint_name": "users_google_id_key5",
+        "constraint_type": "UNIQUE",
+        "column_name": "google_id",
+        "foreign_table_name": "users",
+        "foreign_column_name": "google_id"
+      },
+      {
+        "constraint_name": "users_google_id_key6",
+        "constraint_type": "UNIQUE",
+        "column_name": "google_id",
+        "foreign_table_name": "users",
+        "foreign_column_name": "google_id"
+      },
+      {
+        "constraint_name": "users_google_id_key7",
+        "constraint_type": "UNIQUE",
+        "column_name": "google_id",
+        "foreign_table_name": "users",
+        "foreign_column_name": "google_id"
+      },
+      {
+        "constraint_name": "users_google_id_key8",
+        "constraint_type": "UNIQUE",
+        "column_name": "google_id",
+        "foreign_table_name": "users",
+        "foreign_column_name": "google_id"
+      },
+      {
+        "constraint_name": "users_google_id_key9",
+        "constraint_type": "UNIQUE",
+        "column_name": "google_id",
+        "foreign_table_name": "users",
+        "foreign_column_name": "google_id"
+      },
+      {
+        "constraint_name": "users_google_id_key4",
+        "constraint_type": "UNIQUE",
+        "column_name": "google_id",
+        "foreign_table_name": "users",
+        "foreign_column_name": "google_id"
+      }
+    ],
+    "indexes": [
+      {
+        "indexname": "users_email_key",
+        "indexdef": "CREATE UNIQUE INDEX users_email_key ON public.users USING btree (email)"
+      },
+      {
+        "indexname": "users_email_key1",
+        "indexdef": "CREATE UNIQUE INDEX users_email_key1 ON public.users USING btree (email)"
+      },
+      {
+        "indexname": "users_email_key10",
+        "indexdef": "CREATE UNIQUE INDEX users_email_key10 ON public.users USING btree (email)"
+      },
+      {
+        "indexname": "users_email_key11",
+        "indexdef": "CREATE UNIQUE INDEX users_email_key11 ON public.users USING btree (email)"
+      },
+      {
+        "indexname": "users_email_key12",
+        "indexdef": "CREATE UNIQUE INDEX users_email_key12 ON public.users USING btree (email)"
+      },
+      {
+        "indexname": "users_email_key13",
+        "indexdef": "CREATE UNIQUE INDEX users_email_key13 ON public.users USING btree (email)"
+      },
+      {
+        "indexname": "users_email_key14",
+        "indexdef": "CREATE UNIQUE INDEX users_email_key14 ON public.users USING btree (email)"
+      },
+      {
+        "indexname": "users_email_key15",
+        "indexdef": "CREATE UNIQUE INDEX users_email_key15 ON public.users USING btree (email)"
+      },
+      {
+        "indexname": "users_email_key16",
+        "indexdef": "CREATE UNIQUE INDEX users_email_key16 ON public.users USING btree (email)"
+      },
+      {
+        "indexname": "users_email_key17",
+        "indexdef": "CREATE UNIQUE INDEX users_email_key17 ON public.users USING btree (email)"
+      },
+      {
+        "indexname": "users_email_key18",
+        "indexdef": "CREATE UNIQUE INDEX users_email_key18 ON public.users USING btree (email)"
+      },
+      {
+        "indexname": "users_email_key19",
+        "indexdef": "CREATE UNIQUE INDEX users_email_key19 ON public.users USING btree (email)"
+      },
+      {
+        "indexname": "users_email_key2",
+        "indexdef": "CREATE UNIQUE INDEX users_email_key2 ON public.users USING btree (email)"
+      },
+      {
+        "indexname": "users_email_key20",
+        "indexdef": "CREATE UNIQUE INDEX users_email_key20 ON public.users USING btree (email)"
+      },
+      {
+        "indexname": "users_email_key21",
+        "indexdef": "CREATE UNIQUE INDEX users_email_key21 ON public.users USING btree (email)"
+      },
+      {
+        "indexname": "users_email_key22",
+        "indexdef": "CREATE UNIQUE INDEX users_email_key22 ON public.users USING btree (email)"
+      },
+      {
+        "indexname": "users_email_key23",
+        "indexdef": "CREATE UNIQUE INDEX users_email_key23 ON public.users USING btree (email)"
+      },
+      {
+        "indexname": "users_email_key3",
+        "indexdef": "CREATE UNIQUE INDEX users_email_key3 ON public.users USING btree (email)"
+      },
+      {
+        "indexname": "users_email_key4",
+        "indexdef": "CREATE UNIQUE INDEX users_email_key4 ON public.users USING btree (email)"
+      },
+      {
+        "indexname": "users_email_key5",
+        "indexdef": "CREATE UNIQUE INDEX users_email_key5 ON public.users USING btree (email)"
+      },
+      {
+        "indexname": "users_email_key6",
+        "indexdef": "CREATE UNIQUE INDEX users_email_key6 ON public.users USING btree (email)"
+      },
+      {
+        "indexname": "users_email_key7",
+        "indexdef": "CREATE UNIQUE INDEX users_email_key7 ON public.users USING btree (email)"
+      },
+      {
+        "indexname": "users_email_key8",
+        "indexdef": "CREATE UNIQUE INDEX users_email_key8 ON public.users USING btree (email)"
+      },
+      {
+        "indexname": "users_email_key9",
+        "indexdef": "CREATE UNIQUE INDEX users_email_key9 ON public.users USING btree (email)"
+      },
+      {
+        "indexname": "users_google_id_key",
+        "indexdef": "CREATE UNIQUE INDEX users_google_id_key ON public.users USING btree (google_id)"
+      },
+      {
+        "indexname": "users_google_id_key1",
+        "indexdef": "CREATE UNIQUE INDEX users_google_id_key1 ON public.users USING btree (google_id)"
+      },
+      {
+        "indexname": "users_google_id_key10",
+        "indexdef": "CREATE UNIQUE INDEX users_google_id_key10 ON public.users USING btree (google_id)"
+      },
+      {
+        "indexname": "users_google_id_key11",
+        "indexdef": "CREATE UNIQUE INDEX users_google_id_key11 ON public.users USING btree (google_id)"
+      },
+      {
+        "indexname": "users_google_id_key12",
+        "indexdef": "CREATE UNIQUE INDEX users_google_id_key12 ON public.users USING btree (google_id)"
+      },
+      {
+        "indexname": "users_google_id_key13",
+        "indexdef": "CREATE UNIQUE INDEX users_google_id_key13 ON public.users USING btree (google_id)"
+      },
+      {
+        "indexname": "users_google_id_key14",
+        "indexdef": "CREATE UNIQUE INDEX users_google_id_key14 ON public.users USING btree (google_id)"
+      },
+      {
+        "indexname": "users_google_id_key15",
+        "indexdef": "CREATE UNIQUE INDEX users_google_id_key15 ON public.users USING btree (google_id)"
+      },
+      {
+        "indexname": "users_google_id_key16",
+        "indexdef": "CREATE UNIQUE INDEX users_google_id_key16 ON public.users USING btree (google_id)"
+      },
+      {
+        "indexname": "users_google_id_key17",
+        "indexdef": "CREATE UNIQUE INDEX users_google_id_key17 ON public.users USING btree (google_id)"
+      },
+      {
+        "indexname": "users_google_id_key18",
+        "indexdef": "CREATE UNIQUE INDEX users_google_id_key18 ON public.users USING btree (google_id)"
+      },
+      {
+        "indexname": "users_google_id_key19",
+        "indexdef": "CREATE UNIQUE INDEX users_google_id_key19 ON public.users USING btree (google_id)"
+      },
+      {
+        "indexname": "users_google_id_key2",
+        "indexdef": "CREATE UNIQUE INDEX users_google_id_key2 ON public.users USING btree (google_id)"
+      },
+      {
+        "indexname": "users_google_id_key20",
+        "indexdef": "CREATE UNIQUE INDEX users_google_id_key20 ON public.users USING btree (google_id)"
+      },
+      {
+        "indexname": "users_google_id_key21",
+        "indexdef": "CREATE UNIQUE INDEX users_google_id_key21 ON public.users USING btree (google_id)"
+      },
+      {
+        "indexname": "users_google_id_key22",
+        "indexdef": "CREATE UNIQUE INDEX users_google_id_key22 ON public.users USING btree (google_id)"
+      },
+      {
+        "indexname": "users_google_id_key23",
+        "indexdef": "CREATE UNIQUE INDEX users_google_id_key23 ON public.users USING btree (google_id)"
+      },
+      {
+        "indexname": "users_google_id_key3",
+        "indexdef": "CREATE UNIQUE INDEX users_google_id_key3 ON public.users USING btree (google_id)"
+      },
+      {
+        "indexname": "users_google_id_key4",
+        "indexdef": "CREATE UNIQUE INDEX users_google_id_key4 ON public.users USING btree (google_id)"
+      },
+      {
+        "indexname": "users_google_id_key5",
+        "indexdef": "CREATE UNIQUE INDEX users_google_id_key5 ON public.users USING btree (google_id)"
+      },
+      {
+        "indexname": "users_google_id_key6",
+        "indexdef": "CREATE UNIQUE INDEX users_google_id_key6 ON public.users USING btree (google_id)"
+      },
+      {
+        "indexname": "users_google_id_key7",
+        "indexdef": "CREATE UNIQUE INDEX users_google_id_key7 ON public.users USING btree (google_id)"
+      },
+      {
+        "indexname": "users_google_id_key8",
+        "indexdef": "CREATE UNIQUE INDEX users_google_id_key8 ON public.users USING btree (google_id)"
+      },
+      {
+        "indexname": "users_google_id_key9",
+        "indexdef": "CREATE UNIQUE INDEX users_google_id_key9 ON public.users USING btree (google_id)"
+      },
+      {
+        "indexname": "users_pkey",
+        "indexdef": "CREATE UNIQUE INDEX users_pkey ON public.users USING btree (user_id)"
+      }
+    ],
+    "row_count": 11
+  }
+}
